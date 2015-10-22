@@ -1,0 +1,113 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Localization
+@using Orchard.Mvc.Html;
+@using Orchard.UI.Resources;
+@using PJS.Envision.Models;
+
+@{
+    var theme = WorkContext.CurrentTheme;
+    var settings = WorkContext.CurrentSite.As<EnvisionThemeSettingsPart>();
+
+    string title = Convert.ToString(Model.Title);
+    string siteName = Convert.ToString(WorkContext.CurrentSite.SiteName);
+    bool isRtl = WorkContext.CurrentCultureInfo().TextInfo.IsRightToLeft;
+    Html.AddPageClassNames("dir-" + (isRtl ? "rtl" : "ltr"));
+    Html.AddPageClassNames("theme-" + WorkContext.CurrentTheme.Id);
+
+    Display.Resources();
+}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+    <html lang="@WorkContext.CurrentCulture" class="@Html.ClassForPage() no-js html-loading wf-active ie old-browser lt-ie10 lt-ie9 lt-ie8 lt-ie7 responsive" dir="@(isRtl?"rtl":"ltr")">
+<![endif]-->
+<!--[if IE 7]>
+    <html lang="@WorkContext.CurrentCulture" class="@Html.ClassForPage() no-js html-loading wf-active ie old-browser ie7 lt-ie10 lt-ie9 lt-ie8 responsive" dir="@(isRtl?"rtl":"ltr")">
+<![endif]-->
+<!--[if IE 8]>
+    <html lang="@WorkContext.CurrentCulture" class="@Html.ClassForPage() no-js html-loading wf-active ie old-browser ie8 lt-ie10 lt-ie9 responsive" dir="@(isRtl?"rtl":"ltr")">
+<![endif]-->
+<!--[if IE 9]>
+    <html lang="@WorkContext.CurrentCulture" class="@Html.ClassForPage() no-js html-loading wf-active ie modern-browser ie9 lt-ie10 responsive" dir="@(isRtl?"rtl":"ltr")">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html lang="@WorkContext.CurrentCulture" class="@Html.ClassForPage() no-js html-loading wf-active modern-browser responsive" dir="@(isRtl?"rtl":"ltr")">
+<!--<![endif]-->
+<head>
+    <link rel="apple-touch-icon" sizes="57x57" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-57x57.png")">
+    <link rel="apple-touch-icon" sizes="60x60" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-60x60.png")">
+    <link rel="apple-touch-icon" sizes="72x72" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-72x72.png")">
+    <link rel="apple-touch-icon" sizes="76x76" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-76x76.png")">
+    <link rel="apple-touch-icon" sizes="114x114" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-114x114.png")">
+    <link rel="apple-touch-icon" sizes="120x120" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-120x120.png")">
+    <link rel="apple-touch-icon" sizes="144x144" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-144x144.png")">
+    <link rel="apple-touch-icon" sizes="152x152" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-152x152.png")">
+    <link rel="apple-touch-icon" sizes="180x180" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "apple-touch-icon-180x180.png")">
+    <link rel="icon" type="image/png" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "favicon-32x32.png")" sizes="32x32">
+    <link rel="icon" type="image/png" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "android-chrome-192x192.png")" sizes="192x192">
+    <link rel="icon" type="image/png" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "favicon-96x96.png")" sizes="96x96">
+    <link rel="icon" type="image/png" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "favicon-16x16.png")" sizes="16x16">
+    <link rel="manifest" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "manifest.json")">
+    <link rel="shortcut icon" href="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "favicon.ico")">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "mstile-144x144.png")">
+    <meta name="msapplication-config" content="@Url.Content(theme.Location + "/" + theme.Path + "/Content/icons/" + "browserconfig.xml")">
+    <meta name="theme-color" content="#ffffff">
+    <meta charset="utf-8" />
+    <title>@Html.Title(title, siteName)</title>
+
+    @Display(Model.Head)
+
+    <!-- dynamic js -->
+    <script>(function(d){d.className="dyn"+d.className.substring(6,d.className.length);})(document.documentElement);</script>
+    <script>window.isRTL = @(isRtl.ToString().ToLowerInvariant());</script>
+
+    <script type="text/javascript">
+        var CloudFwOp = { device: "widescreen", RTL: @(isRtl.ToString().ToLowerInvariant()), responsive: true, lang: "@WorkContext.CurrentCulture", sticky_header: @(settings.StickyHeader.ToString().ToLowerInvariant()), sticky_header_offset: @(settings.ShowTopBar && !settings.StickyTopBar ? "0" : "-30"), uniform_elements: true, disable_prettyphoto_on_mobile: true, gallery_overlay_opacity: "0.9" };
+    </script>
+
+    <script type="text/javascript">
+        var cloudfw_is_retina;
+
+        (function(){
+            "use strict";
+
+            if('devicePixelRatio' in window && window.devicePixelRatio >= 1.5 ){
+                cloudfw_is_retina = true;
+            }
+        })();
+    </script>
+
+    <script type="text/javascript">
+        document.documentElement.className = document.documentElement.className.replace('no-js','js');
+        document.documentElement.className = document.documentElement.className.replace('html-loaded','html-loading');
+
+        (function(){
+            "use strict";
+
+            setTimeout(function(){
+                document.documentElement.className = document.documentElement.className.replace('html-loading', 'html-loaded');
+            }, 6000);
+        })();
+    </script>
+
+    @using (Script.Foot()) {
+        <script type="text/javascript">
+            jQuery(document).ready(function(){jQuery('html').removeClass('html-loading').addClass('html-loaded');});
+        </script>
+    }
+
+    <!-- dynamic css -->
+    <style type="text/css">
+        @if (!String.IsNullOrWhiteSpace(settings.TitleBarBackgroundImageUrl)) {
+            <text>
+                #titlebar {background-image: url('@settings.TitleBarBackgroundImageUrl'); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@settings.TitleBarBackgroundImageUrl',sizingMethod='scale'); -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@settings.TitleBarBackgroundImageUrl', sizingMethod='scale')";}
+            </text>
+        }
+    </style>
+</head>
+<body class="@(settings.StickyFooter ? "sticky-footer" : string.Empty) layout--fullwidth @(settings.LayoutStyle == "boxed" ? "layout--boxed" : string.Empty)" style="background-image: url(@(settings.LayoutStyle == "boxed" ? settings.BackgroundImageUrl : "none")); @(settings.BackgroundImageUrl.Contains(".jpg") ? "background-attachment: fixed; background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;" : string.Empty)">
+    @Display(Model.Body)
+    @Display(Model.Tail)
+</body>
+</html>

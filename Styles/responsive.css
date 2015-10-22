@@ -1,0 +1,870 @@
+
+
+@media (max-width: 979px) {
+
+/* ========================================
+    HEADER.FIXED.MOBILE (includes.modules.module.style)
+========================================*/
+.sticky-wrapper{
+	height: auto !important;
+}
+
+
+}
+
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+/* ========================================
+    MASONRY.TABLET (includes.shortcodes.shortcode.masonry)
+========================================*/
+.ui--isotope-item {
+	margin-bottom: 2px;
+}
+
+/* ========================================
+    TABLE.TABLET (includes.shortcodes.shortcode.pricing_table)
+========================================*/
+.ui--pricing-table-features-titles {
+	margin-left: -181px;
+	width: 180px;
+}
+
+.ui--pricing-table-wrap.style2 {
+	margin-left: 180px;
+}
+
+/* ========================================
+    TABS.MEGA.TABLET (includes.shortcodes.shortcode.tabs)
+========================================*/
+html #page-wrap .ui--tabs-mega > .ui--tabs-header .ui--tabs-titles > li a {
+	padding: 15px 20px;
+}
+
+/* ========================================
+    TABS.MINI.TABLET (includes.shortcodes.shortcode.tabs)
+========================================*/
+html #page-wrap .ui--tabs-mini > .ui--tabs-header .ui--tabs-titles > li a {
+	padding: 15px 20px;
+}
+
+/* ========================================
+    TABS.MINI.VERTICAL.TABLET (includes.shortcodes.shortcode.tabs)
+========================================*/
+html #page-wrap .ui--tabs-mini > .ui--tabs-header .ui--tabs-titles > li a {
+	padding: 15px 20px;
+}
+
+/* ========================================
+    BACKGROUND.TABLET (includes.shortcodes.shortcode.video_background)
+========================================*/
+html.no-video .ui--video-background-video video {
+	display: none !important;
+}
+
+html.no-video .ui--video-background-poster {
+	display: block !important;
+}
+
+/* ========================================
+    DEFAULT WIDGETS.TABLET (includes.widgets.widget.defaults)
+========================================*/
+/** Calendar */
+#wp-calendar {
+   border-spacing: 0;
+}
+
+#wp-calendar tbody td {
+  padding: 4px 4px;
+  text-shadow: none;
+}
+
+/* ========================================
+    BLOG.TABLET (includes.modules.module.blog)
+========================================*/
+.ui--blog-item.layout--medium .ui--blog-media {
+	margin-left: 20px;
+}
+
+#page-content.sidebar-layout .ui--blog-item.layout--medium .ui--blog-media {
+	float: none;
+	width: auto;
+	margin-left: 0;
+}
+
+/* ========================================
+    MENUBAR.TABLET (includes.modules.module.menubar)
+========================================*/
+.ui--custom-menu-bar {
+	margin-bottom: 20px;
+}
+
+.ui--custom-menu-bar ul > li > span,
+.ui--custom-menu-bar ul > li > a {
+	padding: 20px 20px;
+}
+
+/* ========================================
+    HEADER NAVIGATION.TABLET (includes.modules.module.nav)
+========================================*/
+nav#navigation {
+	float: none;
+	position: relative !important;
+	margin-top: 0 !important;
+	line-height: 0;
+	text-align: center !important;
+}
+
+
+.without-navigation-holder nav#navigation {
+	float: none;
+	display: block;
+	margin-top: 0 !important;
+	margin: 0 auto !important;
+	max-width: 724px !important;
+	position: relative !important;
+	line-height: 0;
+}
+
+.without-navigation-holder #header-navigation {
+	display: inline-block !important;
+	text-align: left;
+	float: none !important;
+}
+
+.without-navigation-holder #header-navigation > .megamenu {
+	position: static !important;
+}
+
+.without-navigation-holder #header-navigation > .megamenu > ul.sub-menu {
+	width: 100%;
+	max-width: 724px;
+	margin: 0 !important;
+	left: 0;
+	right: 0;
+}
+
+#header-navigation {
+	text-align: center !important;
+}
+
+#header-navigation > li {
+	text-align: left;
+	float: none !important;
+	display: inline-block;
+}
+
+/* ========================================
+    REVSLIDER.TABLET (includes.modules.module.revslider)
+========================================*/
+.rev_slider_wrapper .tparrows.default {
+	width: 30px;
+	height: 48px;
+}
+
+.rev_slider_wrapper .tparrows.default .slider-navigation-wrapper {
+	margin-top: -10px;
+}
+
+.tp-leftarrow.default .slider-navigation-wrapper { margin-left: -2px; }
+.tp-rightarrow.default .slider-navigation-wrapper { margin-left: 2px; }
+
+.rev_slider_wrapper .tparrows.default .slider-navigation-wrapper i {
+	font-size: 12px !important;
+}
+
+/* ========================================
+    LOGO.TABLET (includes.modules.module.style)
+========================================*/
+header #logo {
+	float: none;
+	display: block;
+	text-align: center;
+}
+
+header img#logo-tablet {
+	display: inline !important;
+}
+
+
+
+}
+
+
+
+@media (max-width: 767px) {
+
+/* ========================================
+    BUTTONS.PHONE (includes.shortcodes.shortcode.buttons)
+========================================*/
+.btn {
+	white-space: normal;
+}
+
+/* ========================================
+    CAROUSEL.PHONE (includes.shortcodes.shortcode.carousel)
+========================================*/
+.ui--carousel.fullwidth-content {
+	margin-left: 0 !important;
+
+	width: 100% !important;
+}
+
+
+/* ========================================
+    LIST.PHONE (includes.shortcodes.shortcode.clients)
+========================================*/
+.ui--client-list .ui-row > .ui-column .ui--client {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.ui--client-list .ui-row > .ui-column > .vertical-divider {
+	display: none;
+}
+
+
+/* ========================================
+    COLUMNS.PHONE (includes.shortcodes.shortcode.columns)
+========================================*/
+.ui-fluid-column {
+	display: block;
+	float: none;
+	width: 100% !important;
+	margin-left: 0;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+
+}
+
+/* ========================================
+    MASONRY.PHONE (includes.shortcodes.shortcode.masonry)
+========================================*/
+.ui--masonry {
+	margin-left: 0;
+}
+
+.ui--isotope-item {
+	margin-bottom: 12px;
+}
+
+.isotope,
+.isotope .ui--isotope-item {
+	transition: none !important;
+	-moz-transition: none !important;
+	-webkit-transition: none !important;
+	-o-transition: none !important;
+}
+
+/* ========================================
+    TABLE.PHONE (includes.shortcodes.shortcode.pricing_table)
+========================================*/
+.ui--pricing-table li,
+.ui--pricing-table > li.featured {
+	float: none;
+	margin: 0 0 18px;
+	padding-bottom: 0;
+	width: auto !important;
+}
+
+.ui--pricing-table-feature-title-phone {
+	display: block;
+}
+
+.ui--pricing-table-wrap.style2 {
+	margin-left: 0;
+}
+
+.ui--pricing-table-features-titles {
+	display: none;
+}
+
+.ui--pricing-table-before-html,
+.ui--pricing-table-feature {
+	min-height: auto !important;
+}
+
+.ui--pricing-table-wrap.style2 .ui--pricing-table-features-rows {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.ui--pricing-table-wrap.style2 .ui--pricing-table-features-rows > .ui--pricing-table-feature {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+/* ========================================
+    SECTIONS.PHONE (includes.shortcodes.shortcode.section)
+========================================*/
+.fullwidth-content .ui--section-content {
+	padding: 30px 40px 12px !important;
+}
+
+/* ========================================
+    TABS.BASE.PHONE (includes.shortcodes.shortcode.tabs)
+========================================*/
+.ui--tabs-titles {
+	display: block;
+}
+
+.ui--tabs-titles > li {
+	float: none;
+	width: 100%;
+	display: block;
+}
+
+.ui--tabs-header .ui--tabs-header-holder {
+	display: block;
+	text-align: left;
+}
+
+/* ========================================
+    TABS.MEGA.PHONE (includes.shortcodes.shortcode.tabs)
+========================================*/
+html #page-wrap .ui--tabs-mega > .ui--tabs-header .ui--tabs-titles > li a {
+	padding: 10px 30px;
+}
+
+html #page-wrap .ui--tabs-mega > .ui--tabs-header .ui--tabs-titles > li a
+{
+	border-top: 1px solid transparent;
+	border-left: 1px solid transparent;
+	border-right: 1px solid transparent;
+}
+
+/* ========================================
+    TABS.MINI.PHONE (includes.shortcodes.shortcode.tabs)
+========================================*/
+
+html #page-wrap .ui--tabs-mini > .ui--tabs-header {
+	padding-bottom: 1px;
+}
+
+html #page-wrap .ui--tabs-mini > .ui--tabs-header .ui--tabs-titles > li {
+	max-height: 48px;
+}
+
+html #page-wrap .ui--tabs-mini > .ui--tabs-header .ui--tabs-titles > li a {
+	padding: 10px 30px;
+	border-top: 2px solid transparent;
+	border-right: 1px solid transparent;
+	border-left: 1px solid transparent;
+	border-bottom: 1px solid transparent;
+	min-height: none !important;
+}
+
+html #page-wrap .ui--tabs-mini-horizontal > .ui--tabs-header .ui--tabs-titles > li a {				
+	min-height: 0px !important;
+}
+
+
+html #page-wrap .ui--tabs-mini > .ui--tabs-header .ui--tabs-border-after,
+html #page-wrap .ui--tabs-mini > .ui--tabs-header .ui--tabs-border-before {
+	display: none;
+}
+
+/* ========================================
+    TABS.MINI.VERTICAL.PHONE (includes.shortcodes.shortcode.tabs)
+========================================*/
+html #page-wrap .ui--tabs-mini-vertical > .ui--tabs-header {
+}
+
+html #page-wrap .ui--tabs-mini-vertical > .ui--tabs-header .ui--tabs-titles > li a {
+	padding: 10px 30px;
+	border-top: 1px solid transparent;
+	border-right: 1px solid transparent;
+	border-left: 2px solid transparent;
+	border-bottom: 1px solid transparent;
+}
+
+html #page-wrap .ui--tabs-mini > .ui--tabs-header .ui--tabs-border-top,
+html #page-wrap .ui--tabs-mini > .ui--tabs-header .ui--tabs-border-bottom {
+	display: none;
+}
+
+
+/* ========================================
+    TYPO.PHONE (includes.shortcodes.shortcode.typography)
+========================================*/
+blockquote,
+.ui--blockquote,
+.ui--pullquote {
+	text-align: left !important;
+	border-left: 0 !important;
+	border-right: 0 !important;
+	border-top: 5px solid #eeeeee;
+	border-bottom: 5px solid #eeeeee;
+
+	max-width: none;
+	width: auto;
+	float: none;
+
+	padding: 18px 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+blockquote p,
+.ui--blockquote p,
+.ui--pullquote p,
+blockquote small,
+.ui--blockquote small,
+.ui--pullquote small {
+	text-align: left !important;
+}
+
+/* ========================================
+    DEFAULT WIDGETS.PHONE (includes.widgets.widget.defaults)
+========================================*/
+#wp-calendar thead th { padding: 5px !important; }
+#wp-calendar tbody td { padding: 2px 4px !important; }
+
+/* ========================================
+    BLOG.PHONE (includes.modules.module.blog)
+========================================*/
+.ui--blog-side {
+	display: none;
+}
+
+.ui--blog-item.layout--medium .ui--blog-media {
+	float: none !important;
+	width: auto !important;
+	margin-left: 0 !important;
+}
+
+/* ========================================
+    DEVELOPER.PHONE (includes.modules.module.developer)
+========================================*/
+#wp-admin-bar-top-secondary {
+	display: none;
+}
+
+/* ========================================
+    MENUBAR.PHONE (includes.modules.module.menubar)
+========================================*/
+.ui--custom-menu-bar ul {
+	display: block;
+	width: auto;
+	margin: 0;
+}
+
+.ui--custom-menu-bar.fullwidth-container ul {
+	border-left: 1px solid #e0e0e0;
+	border-right: 1px solid #e0e0e0;
+}
+
+.ui--custom-menu-bar ul > li > span,
+.ui--custom-menu-bar ul > li > a {
+	padding: 15px 20px;
+	margin: 0;
+	border-left: 0;
+	border-right: 0;
+}
+
+.ui--custom-menu-bar ul > li,
+.ui--custom-menu-bar.ui--type-splitted ul > li.pull-left,
+.ui--custom-menu-bar.ui--type-splitted ul > li.pull-right {
+	float: none;
+	display: block;
+	margin: 0 !important;
+	width: auto;
+	max-width: none !important;
+	border-left: 0 !important;
+	border-right: 0 !important;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.ui--custom-menu-bar ul > li.last-item {
+	border-right: 0 !important;
+	border-bottom: 0 !important;
+
+}
+
+
+/* ========================================
+    HEADER NAVIGATION.PHONE (includes.modules.module.nav)
+========================================*/
+nav#navigation {
+	float: none;
+	display: block;
+	margin-top: 0 !important;
+	margin: 0 auto !important;
+	max-width: 440px !important;
+	position: relative;
+	width: 80%;
+}
+
+#header-navigation {
+	display: none;
+	text-align: left;
+	float: none !important;
+}
+
+nav#navigation.with-navigation-holder {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+#header-navigation > li { width: 100% !important; margin: auto; float: none !important; clear: both; }
+
+#header-navigation > li,
+#header-navigation > li > a {
+	float: none  !important;
+	display: block;
+}
+
+#header-navigation > li {
+	border-color: #ebebeb;
+	margin-top: -2px;
+}
+
+#header-navigation > li > a {
+	margin: 0 !important;
+	padding: 10px 20px !important;
+	border-bottom: 0 !important;
+}
+
+.rtl #header-navigation > .fallout li.menu-item > a,
+.rtl #header-navigation li.menu-item > a { text-align: right !important; }
+.rtl #header-navigation li a > .ui--caret,
+.rtl #header-navigation li.to-left a > .ui--caret,
+.rtl #header-navigation li a > .ui--caret,
+.rtl #header-navigation li.to-left a > .ui--caret,
+.rtl #header-navigation > li a > .ui--caret {
+	right: auto !important;
+	left: 7px !important;
+	margin-left: 8px !important;
+	margin-right: 0 !important;
+}
+
+#header-navigation li > ul.sub-menu:after {
+	display: none !important;
+}
+
+
+#header-navigation > .fallout > ul.sub-menu {
+	width: auto !important;
+	position: relative !important;
+	width: auto !important;
+	left: 0 !important;
+	right: 0 !important;
+	top: 100% !important;
+	float: none !important;
+	display: none !important;
+	position: absolute !important;
+	margin: 0 !important;
+}
+
+#header-navigation > .fallout ul ul.sub-menu{
+	left: auto; right: auto;
+	top: auto; bottom: auto;
+	margin: 0 !important;
+	position: static !important;
+	visibility: visible !important;
+	opacity: 1 !important;
+	height: auto !important;
+	width: 100% !important;
+
+	background: none !important;
+	background-color: transparent !important;
+	border: 0;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+#header-navigation > .fallout ul.sub-menu {
+	position: static !important;
+	display: none !important;
+}
+
+#header-navigation > .fallout .hover > ul.sub-menu,
+#header-navigation > .fallout.hover > ul.sub-menu {
+	display: block !important;
+	width: 100%;
+}
+
+#header-navigation > .fallout li { width: 100% !important; float: none !important; clear: both; }
+#header-navigation > .fallout li a { text-align: left !important; position: relative !important; }
+#header-navigation > .fallout .level-1 > ul.sub-menu { background: #f1f1f1 !important; }
+#header-navigation > .fallout .level-2 ul.sub-menu { margin-left: 20px !important; }
+#header-navigation > .fallout li li a {  border-bottom: 0 !important; }
+
+
+#header-navigation > .fallout .level-1 ul.sub-menu li a {
+	background: none !important;
+	text-shadow: none !important;
+	color: #7c7c7c !important;
+}
+
+#header-navigation > .fallout .level-1 ul.sub-menu li a:hover {
+	color: #333 !important;
+}
+
+#header-navigation > .megamenu.layout-fullwidth,
+#header-navigation > .megamenu {
+	position: relative !important;
+}
+
+#header-navigation > .megamenu ul.sub-menu ul.sub-menu{
+	position: relative !important;
+	display: block !important;
+	background: none !important;
+	background-color: transparent !important;
+}
+
+#header-navigation > .megamenu > ul.sub-menu {
+	position: absolute !important;
+	width: auto !important;
+	left: 0 !important;
+	right: 0 !important;
+	top: -9999px !important;
+	display: block !important;
+	/*position: absolute !important;*/
+	margin: 0 !important;
+}
+
+#header-navigation > .megamenu.hover > ul.sub-menu {
+	top: 100% !important;
+	position: relative !important;
+}
+
+#header-navigation li > ul.sub-menu > li.hover > ul.sub-menu {
+	top: 0 !important;
+}
+
+#header-navigation > .megamenu.hover ul.sub-menu {
+	display: block !important;
+	width: 100%;
+}
+
+#header-navigation > .megamenu > ul.sub-menu { overflow: hidden; }
+#header-navigation > .megamenu > ul.sub-menu > li { width: 100% !important; float: left !important; 
+		-webkit-box-shadow: 0 -1px 10px rgba(0,0,0,.1), 0 1px 0 rgba(0,0,0,.05);
+		-moz-box-shadow: 0 -1px 10px rgba(0,0,0,.1), 0 1px 0 rgba(0,0,0,.05);
+		box-shadow: 0 -1px 10px rgba(0,0,0,.1), 0 1px 0 rgba(0,0,0,.05);
+ }
+
+#header-navigation > .megamenu > ul.sub-menu > li:first-child { margin-top: 0 !important; }
+#header-navigation > .megamenu > ul.sub-menu > li:last-child { margin-bottom: 0 !important; }
+#header-navigation > .megamenu .level-1:after { display: none; }
+
+
+#header-navigation li a {
+	position: relative;
+}
+
+#header-navigation li a .ui--caret,
+#header-navigation li.to-left a .ui--caret,
+#header-navigation li a .ui--caret,
+#header-navigation li.to-left a .ui--caret {
+	position: absolute;
+	left: auto !important;
+	right: 7px !important;
+	top: 50% !important;
+	margin-top: -9px !important;
+	margin-right: 8px !important;
+}
+
+#header-navigation .fallout a .ui--caret:before {
+	content: "\f107" !important;
+}
+
+.header-style-2 #header-navigation > li.top-level-item {
+	background-image: none !important;
+}
+
+/* ========================================
+    PRETTYPHOTO.PHONE (includes.modules.module.prettyPhoto)
+========================================*/
+div.pp_envision div.ppt {
+	max-width: 60%;
+	display: none !important;
+}
+
+/* ========================================
+    REVSLIDER.PHONE (includes.modules.module.revslider)
+========================================*/
+.tp-bullets.simplebullets,
+.rev_slider_wrapper .tp-leftarrow,
+.rev_slider_wrapper .tp-rightarrow {
+	display: none !important;
+}
+
+/* ========================================
+    COMMENTS.PHONE (includes.modules.module.style)
+========================================*/
+
+#comments .commentlist li > ul {
+	margin-left: 18px;
+}
+
+#comments .commentlist li .meta .pull-left,
+#comments .commentlist li .meta .pull-right
+{
+	float: none;
+	margin-left: 0;
+	margin-right: 0;
+	text-align: center;
+}
+
+#comments .commentlist li .meta .dash { display: none; }
+#comments .commentlist li .meta small { display: block; }
+
+#comments .commentlist li .comment-text .meta {
+}
+
+
+#comments .commentlist li .meta .ui--star-rating-wrap {
+	margin-top: 6px;
+}
+
+#comments .commentlist li .comment-avatar {
+	position: absolute;
+	left: -28px;
+	top: 18px;
+	z-index: 10;
+}
+
+.ui--comments-arrow {
+	display: none;
+}
+
+#comments .commentlist li .comment-text {
+	margin: 0 0 0 0;
+}
+
+
+.comment #respond {
+	margin-left: 0 !important;
+}
+
+/* ========================================
+    FLEXSLIDER.PHONE (includes.modules.module.style)
+========================================*/
+.flex-caption,
+.ui--flexslider-navigation,
+.flexslider .flex-control-nav,
+.flexslider .flex-control-thumbs,
+.flexslider .flex-direction-nav { display: none !important;}
+
+/* ========================================
+    BOTTOM.PHONE (includes.modules.module.style)
+========================================*/
+#footer-bottom #footer-texts,
+#footer-bottom #footer-navigation {
+	display: block;
+	width: auto;
+	max-width: none;
+	float: none;
+	text-align: center;
+}
+
+#footer-bottom #footer-navigation {
+	margin-top: 10px;
+}
+
+/* ========================================
+    LOGO.PHONE (includes.modules.module.style)
+========================================*/
+header #logo {
+	float: none;
+	display: block;
+	text-align: center;
+}
+
+header img#logo-phone {
+	display: inline !important;
+}
+
+/* ========================================
+    STYLE.PHONE (includes.modules.module.style)
+========================================*/
+body.layout--boxed { background-image: none !important; }
+
+/* ========================================
+    TITLEBAR.PHONE (includes.modules.module.style)
+========================================*/
+#titlebar > .container {
+	padding: 20px 40px;
+}
+
+#titlebar-text,
+.orientation-right #titlebar-text {
+	max-width: none;
+	width: auto;
+	display: block;
+	float: none;
+	padding-left: 0;
+	padding-right: 0;
+	text-align: left;
+}
+
+#titlebar-breadcrumb {
+	position: static;
+	width: auto;
+}
+
+#breadcrumb {
+	position: static;
+	margin-top: 18px !important;
+	float: none;
+
+	display: block;
+	max-width: 100%;
+	text-align: center;
+}
+
+
+/* ========================================
+    TOPBAR.PHONE (includes.modules.module.style)
+========================================*/
+#top-bar,
+#top-bar-background {
+	height: auto;
+}
+
+#top-bar .ui--widget {
+	height: auto !important;
+}
+
+#top-bar-text {
+	white-space: auto !important;
+}
+
+#top-bar .ui--custom-menu li > ul > li > ul {
+	position: static;
+	top: auto;
+	left: auto;
+	right: auto;
+	bottom: auto;
+	margin: 0;
+
+	display: block !important;
+	background: #f9f9f9;
+	border: 0;
+	border-bottom: 1px solid #ebebeb;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+#top-bar .ui--custom-menu li > ul > li > ul > li {
+	line-height: 20px;
+	height: auto;
+	min-height: none;
+}
+
+#top-bar .ui--custom-menu li > ul > li > ul > li > a {
+	border: 0;
+	padding: 5px 10px 5px 30px;
+	line-height: 20px;
+	min-height: 20px;
+}
+
+
+}
+

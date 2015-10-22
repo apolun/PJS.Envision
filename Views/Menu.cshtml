@@ -1,0 +1,29 @@
+﻿@{
+    // Model is Model.Menu from the layout (Layout.Menu)
+    Model.Id = "header-navigation";
+    Model.Classes.Add("clearfix unstyled-all");
+    var tag = Tag(Model, "ul");
+
+    var items = (IList<dynamic>)Enumerable.Cast<dynamic>(Model.Items);
+
+    if (items.Any()) {
+        items[0].Classes.Add("first");
+        items[items.Count - 1].Classes.Add("last");
+    }
+}
+
+@if (Model.Classes.Contains("menu-main-menu")) {
+    <nav id="navigation" class="without-navigation-holder">
+        <div id="header-navigation-toggle" class="visible-phone">
+            <a href="javascript:;">Navigation <i class="fa fa-align-justify ui--caret"></i></a>
+        </div>
+        @tag.StartElement
+        @DisplayChildren(Model)
+        @tag.EndElement
+    </nav>
+}
+else {
+    @tag.StartElement
+    @DisplayChildren(Model)
+    @tag.EndElement
+}

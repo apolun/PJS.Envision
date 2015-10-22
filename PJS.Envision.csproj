@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{208D2DE8-147E-44A9-BC67-31FAC61A97C8}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PJS.Envision</RootNamespace>
+    <AssemblyName>PJS.Envision</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\..\..\OrchardBasicCorrectness.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Mvc, Version=5.2.3, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\lib\aspnetmvc\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets.json" />
+    <Content Include="Content\bullet.png" />
+    <Content Include="Content\icons\android-chrome-36x36.png" />
+    <Content Include="Content\icons\android-chrome-48x48.png" />
+    <Content Include="Content\icons\android-chrome-72x72.png" />
+    <Content Include="Content\icons\apple-touch-icon-57x57.png" />
+    <Content Include="Content\icons\apple-touch-icon-60x60.png" />
+    <Content Include="Content\icons\apple-touch-icon-72x72.png" />
+    <Content Include="Content\icons\apple-touch-icon-76x76.png" />
+    <Content Include="Content\icons\apple-touch-icon-precomposed.png" />
+    <Content Include="Content\icons\apple-touch-icon.png" />
+    <Content Include="Content\icons\browserconfig.xml" />
+    <Content Include="Content\icons\favicon-16x16.png" />
+    <Content Include="Content\icons\favicon-32x32.png" />
+    <Content Include="Content\icons\favicon.ico" />
+    <Content Include="Content\icons\mstile-150x150.png" />
+    <Content Include="Content\icons\mstile-310x150.png" />
+    <Content Include="Content\icons\mstile-70x70.png" />
+    <Content Include="Content\icons\safari-pinned-tab.svg" />
+    <Content Include="Content\logo-dark-blue%402x.png" />
+    <Content Include="Content\fade-dotted.png" />
+    <Content Include="Content\fade-line.png" />
+    <Content Include="Content\logo-brown%402x.png" />
+    <Content Include="Content\logo-cyan%402x.png" />
+    <Content Include="Content\logo-green%402x.png" />
+    <Content Include="Content\logo-orange%402x.png" />
+    <Content Include="Content\logo-yellow%402x.png" />
+    <Content Include="Content\logo.png" />
+    <Content Include="Content\patterns\1.png" />
+    <Content Include="Content\patterns\10.png" />
+    <Content Include="Content\patterns\11.png" />
+    <Content Include="Content\patterns\12.png" />
+    <Content Include="Content\patterns\13.png" />
+    <Content Include="Content\patterns\14.png" />
+    <Content Include="Content\patterns\15.png" />
+    <Content Include="Content\patterns\2.png" />
+    <Content Include="Content\patterns\3.png" />
+    <Content Include="Content\patterns\4.png" />
+    <Content Include="Content\patterns\5.png" />
+    <Content Include="Content\patterns\6.png" />
+    <Content Include="Content\patterns\7.png" />
+    <Content Include="Content\patterns\8.png" />
+    <Content Include="Content\patterns\9.png" />
+    <Content Include="Content\patterns\image-1.jpg" />
+    <Content Include="Content\patterns\image-2.jpg" />
+    <Content Include="Content\patterns\image-3.jpg" />
+    <Content Include="Content\patterns\image-4.jpg" />
+    <Content Include="Content\patterns\image-5.jpg" />
+    <Content Include="Content\prettyPhoto\default\default_thumb.png" />
+    <Content Include="Content\prettyPhoto\default\loader.gif" />
+    <Content Include="Content\prettyPhoto\default\sprite.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_next.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_x.png" />
+    <Content Include="Content\prettyPhoto\default\sprite_y.png" />
+    <Content Include="Content\shadow-1.png" />
+    <Content Include="Content\shadow-2.png" />
+    <Content Include="Content\shadow-3.png" />
+    <Content Include="Content\shadow-4.png" />
+    <Content Include="Content\shadow-5.png" />
+    <Content Include="Content\shadow-6.png" />
+    <Content Include="Content\shadow-7.png" />
+    <Content Include="Content\shadow-8.png" />
+    <Content Include="Content\sidebar-shadow-left.png" />
+    <Content Include="Content\sidebar-shadow-right.png" />
+    <Content Include="Content\socialbar\colorful-gradient\30px%402x.png" />
+    <Content Include="Content\socialbar\colorful-gradient\30px.png" />
+    <Content Include="Content\socialbar\colorful-gradient\40px%402x.png" />
+    <Content Include="Content\socialbar\colorful-gradient\40px.png" />
+    <Content Include="Content\socialbar\dark-gradient\30px%402x.png" />
+    <Content Include="Content\socialbar\dark-gradient\30px.png" />
+    <Content Include="Content\socialbar\dark-gradient\40px%402x.png" />
+    <Content Include="Content\socialbar\dark-gradient\40px.png" />
+    <Content Include="Content\socialbar\dark_p50-gradient\30px%402x.png" />
+    <Content Include="Content\socialbar\dark_p50-gradient\30px.png" />
+    <Content Include="Content\socialbar\dark_p50-gradient\40px%402x.png" />
+    <Content Include="Content\socialbar\dark_p50-gradient\40px.png" />
+    <Content Include="Content\socialbar\default\30px%402x.png" />
+    <Content Include="Content\socialbar\default\30px.png" />
+    <Content Include="Content\socialbar\default\40px%402x.png" />
+    <Content Include="Content\socialbar\default\40px.png" />
+    <Content Include="Content\socialbar\grey-bevel-gradient\30px%402x.png" />
+    <Content Include="Content\socialbar\grey-bevel-gradient\30px.png" />
+    <Content Include="Content\socialbar\grey-bevel-gradient\40px%402x.png" />
+    <Content Include="Content\socialbar\grey-bevel-gradient\40px.png" />
+    <Content Include="Content\socialbar\grey-gradient\30px%402x.png" />
+    <Content Include="Content\socialbar\grey-gradient\30px.png" />
+    <Content Include="Content\socialbar\grey-gradient\40px%402x.png" />
+    <Content Include="Content\socialbar\grey-gradient\40px.png" />
+    <Content Include="Content\socialbar\grey-transparent\30px%402x.png" />
+    <Content Include="Content\socialbar\grey-transparent\30px.png" />
+    <Content Include="Content\socialbar\grey-transparent\40px%402x.png" />
+    <Content Include="Content\socialbar\grey-transparent\40px.png" />
+    <Content Include="Content\socialbar\white-gradient\30px%402x.png" />
+    <Content Include="Content\socialbar\white-gradient\30px.png" />
+    <Content Include="Content\socialbar\white-gradient\40px%402x.png" />
+    <Content Include="Content\socialbar\white-gradient\40px.png" />
+    <Content Include="Content\socialbar\white_p50-gradient\30px%402x.png" />
+    <Content Include="Content\socialbar\white_p50-gradient\30px.png" />
+    <Content Include="Content\socialbar\white_p50-gradient\40px%402x.png" />
+    <Content Include="Content\socialbar\white_p50-gradient\40px.png" />
+    <Content Include="Content\title-bar\1.jpg" />
+    <Content Include="Content\title-bar\2.jpg" />
+    <Content Include="Content\title-bar\4.jpg" />
+    <Content Include="Content\title-bar\3.jpg" />
+    <Content Include="Content\title-bar\5.jpg" />
+    <Content Include="Scripts\common.js" />
+    <Content Include="Scripts\cufon.js" />
+    <Content Include="Scripts\envision-custom.js" />
+    <Content Include="Scripts\extensions.js" />
+    <Content Include="Scripts\gmap.js" />
+    <Content Include="Scripts\jquery-migrate.js" />
+    <Content Include="Scripts\jquery-migrate.min.js" />
+    <Content Include="Scripts\jquery.ba-throttle-debounce.min.js" />
+    <Content Include="Scripts\jquery.backstretch.min.js" />
+    <Content Include="Scripts\jquery.flexslider.js" />
+    <Content Include="Scripts\jquery.isotope.js" />
+    <Content Include="Scripts\jquery.masonry.js" />
+    <Content Include="Scripts\jquery.maximage.js" />
+    <Content Include="Scripts\jquery.mousewheel.min.js" />
+    <Content Include="Scripts\jquery.prettyPhoto.js" />
+    <Content Include="Scripts\jquery.sharrre.js" />
+    <Content Include="Scripts\jquery.sharrre.min.js" />
+    <Content Include="Scripts\jquery.smoothscroll.js" />
+    <Content Include="Scripts\jquery.text-rotator.js" />
+    <Content Include="Scripts\jquery.touchSwipe.min.js" />
+    <Content Include="Scripts\jquery.transit.min.js" />
+    <Content Include="Scripts\jquery.viewport.mini.js" />
+    <Content Include="Scripts\modernizr-2.6.2-respond-1.1.0.min.js" />
+    <Content Include="Scripts\noconflict.js" />
+    <Content Include="Scripts\packery.pkgd.min.js" />
+    <Content Include="Scripts\queryloader2.js" />
+    <Content Include="Scripts\retina.js" />
+    <Content Include="Scripts\to_top.js" />
+    <Content Include="Scripts\waypoints-sticky.js" />
+    <Content Include="Scripts\waypoints.min.js" />
+    <Content Include="Scripts\webfont.js" />
+    <Content Include="Styles\bootstrap-responsive-1170.min.css" />
+    <Content Include="Styles\bootstrap-responsive-1170.css" />
+    <Content Include="Styles\bootstrap-responsive.min.css" />
+    <Content Include="Styles\bootstrap-responsive.css" />
+    <Content Include="Styles\bootstrap.min.css" />
+    <Content Include="Styles\bootstrap.css" />
+    <Content Include="Styles\custom-login.css" />
+    <Content Include="Styles\envision-custom.css" />
+    <Content Include="Styles\extensions.min.css" />
+    <Content Include="Styles\extensions.css" />
+    <Content Include="Styles\font-awesome-4.4.0\css\font-awesome.css" />
+    <Content Include="Styles\font-awesome-4.4.0\css\font-awesome.min.css" />
+    <Content Include="Styles\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Styles\icomoon\css\icomoon.css" />
+    <Content Include="Styles\icomoon\font\Icomoon.svg" />
+    <Content Include="Styles\responsive.min.css" />
+    <Content Include="Styles\responsive.css" />
+    <Content Include="Styles\retina.css" />
+    <Content Include="Styles\rtl.css" />
+    <Content Include="Styles\skins\brown.css" />
+    <Content Include="Styles\skins\cyan.css" />
+    <Content Include="Styles\skins\dark-blue.css" />
+    <Content Include="Styles\skins\dark.css" />
+    <Content Include="Styles\skins\default-boxed.css" />
+    <Content Include="Styles\skins\default-light-footer.css" />
+    <Content Include="Styles\skins\default.css" />
+    <Content Include="Styles\skins\green.css" />
+    <Content Include="Styles\skins\orange-light-footer.css" />
+    <Content Include="Styles\skins\orange.css" />
+    <Content Include="Styles\skins\yellow.css" />
+    <Content Include="Styles\style.min.css" />
+    <Content Include="Styles\style.css" />
+    <Content Include="Styles\woocommerce.min.css" />
+    <Content Include="Styles\woocommerce.css" />
+    <Content Include="Web.config" />
+    <Content Include="Scripts\Web.config" />
+    <Content Include="Styles\Web.config" />
+    <Content Include="Content\Web.config" />
+    <Content Include="Theme.txt" />
+    <Content Include="Theme.png" />
+    <Content Include="Placement.info" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
+      <Project>{2D1D92BB-4555-4CBE-8D0E-63563D6CE4C6}</Project>
+      <Name>Orchard.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Core\Orchard.Core.csproj">
+      <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
+      <Name>Orchard.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Layouts\Orchard.Layouts.csproj">
+      <Project>{6bd8b2fa-f2e3-4ac8-a4c3-2925a653889a}</Project>
+      <Name>Orchard.Layouts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Users\Orchard.Users.csproj">
+      <Project>{79aed36e-abd0-4747-93d3-8722b042454b}</Project>
+      <Name>Orchard.Users</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Gravatar\Gravatar.cs" />
+    <Compile Include="Gravatar\Gremail.cs" />
+    <Compile Include="Gravatar\Grofile.cs" />
+    <Compile Include="Gravatar\GrofileInfo.cs" />
+    <Compile Include="Gravatar\Html\HtmlHelperExtensions.cs" />
+    <Compile Include="Gravatar\Html\UrlHelperExtensions.cs" />
+    <Compile Include="Handlers\EnvisionThemeSettingsPartHandler.cs" />
+    <Compile Include="Models\EnvisionThemeSettingsPart.cs" />
+    <Compile Include="ResourceManifest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Document.cshtml" />
+    <Content Include="Views\Resources.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts\EnvisionThemeSettings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\font-awesome-4.4.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Styles\font-awesome-4.4.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Styles\font-awesome-4.4.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Styles\font-awesome-4.4.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Styles\font-awesome-4.4.0\fonts\FontAwesome.otf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\icomoon\font\Icomoon.eot" />
+    <Content Include="Styles\icomoon\font\Icomoon.ttf" />
+    <Content Include="Styles\icomoon\font\Icomoon.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Insertions.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TopBar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Branding.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Elements\Column.cshtml" />
+    <Content Include="Views\Elements\Grid.cshtml" />
+    <Content Include="Views\Elements\Row.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Menu.cshtml" />
+    <Content Include="Views\MenuItem.cshtml" />
+    <Content Include="Views\MenuItemLink.cshtml" />
+    <Content Include="Views\MenuItemLinkdd.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Title.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Breadcrumb.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\BadgeOfHonor.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Message.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\icons\manifest.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\LogOn.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" DependsOnTargets="AfterBuildCompiler">
+    <PropertyGroup>
+      <AreasManifestDir>$(ProjectDir)\..\Manifests</AreasManifestDir>
+    </PropertyGroup>
+    <!-- If this is an area child project, uncomment the following line:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Child" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    -->
+    <!-- If this is an area parent project, uncomment the following lines:
+    <CreateAreaManifest AreaName="$(AssemblyName)" AreaType="Parent" AreaPath="$(ProjectDir)" ManifestPath="$(AreasManifestDir)" ContentFiles="@(Content)" />
+    <CopyAreaManifests ManifestPath="$(AreasManifestDir)" CrossCopy="false" RenameViews="true" />
+    -->
+  </Target>
+  <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45979</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://orchard.codeplex.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

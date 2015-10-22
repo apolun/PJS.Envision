@@ -1,0 +1,60 @@
+﻿@{
+    // odd formatting in this file is to cause more attractive results in the output.
+    var items = Enumerable.Cast<dynamic>((System.Collections.IEnumerable)Model);
+}
+@{
+    string requestUrl = Request.Path.ToUpperInvariant();
+    string modelUrl = Model.Href.ToUpperInvariant();
+    
+    if (!HasText(Model.Text)) {
+        @DisplayChildren(Model)
+    }
+    else {
+        if ((bool)Model.Selected || (!string.IsNullOrEmpty(modelUrl) && requestUrl.StartsWith(modelUrl + "/"))) {
+            Model.Classes.Add("current-menu-item");
+        }
+        if (items.Any()) {
+            Model.Classes.Add("menu-item-has-children has-child");
+        }
+        if (Model.Parent.MenuName != null) {
+            Model.Classes.Add("level-0 top-level-item");
+
+            if (items.Any()) {
+                Model.Classes.Add("fallout");
+            }
+        }
+        else {
+            Model.Classes.Add("sub-level-item");
+            if ((bool)Model.Selected || (!string.IsNullOrEmpty(modelUrl) && requestUrl.StartsWith(modelUrl + "/"))) {
+                Model.Classes.Add("current-sub-item");
+            }
+        }
+
+        @* morphing the shape to keep Model untouched*@
+        Model.Metadata.Alternates.Clear();
+        
+        if (items.Any()) {
+            Model.Metadata.Type = "MenuItemLinkdd";
+        }
+        else {
+            Model.Metadata.Type = "MenuItemLink";
+        }
+
+        @* render the menu item only if it has some content *@
+        var renderedMenuItemLink = Display(Model);
+        if (HasText(renderedMenuItemLink)) {
+            Model.Classes.Add("menu-item");
+            var tag = Tag(Model, "li");
+            @tag.StartElement
+            @renderedMenuItemLink
+
+            if (items.Any()) {
+                <ul class="sub-menu">
+                    @DisplayChildren(Model)
+                </ul>
+            }
+    
+            @tag.EndElement
+        }
+    }
+}
