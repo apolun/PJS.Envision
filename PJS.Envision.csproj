@@ -341,6 +341,20 @@
   <ItemGroup>
     <Content Include="Views\LogOn.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Orchard.Users\Account\AccessDenied.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailFail.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailSent.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChallengeEmailSuccess.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\LostPassword.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\RegistrationPending.cshtml" />
+    <Content Include="Views\Orchard.Users\Account\RequestLostPassword.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

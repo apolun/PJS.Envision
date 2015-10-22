@@ -1,13 +1,12 @@
 @{
     Layout.Title = Model.Title;
-    string subTitle = Model.SubTitle;
 }
 
 <div id="titlebar-text">
     <h2 id="titlebar-title">@Model.Title</h2>
-    @if (!string.IsNullOrWhiteSpace(subTitle)) {
+    @if (Model.SubTitle != null) {
         <div class="titlebar-text-content">
-            <p>@subTitle</p>
+            <p>@Model.SubTitle</p>
         </div>
     }
 </div>

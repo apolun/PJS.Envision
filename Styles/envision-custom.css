@@ -28,3 +28,12 @@ html #footer-bottom { background-image: none; }
 @media (min-width: 979px) {
     .modern-browser .layout--fullwidth #header-container.stuck { left: auto; }
 }
+
+/* set minimum height for all message boxes */
+.ui--message-box {
+    min-height: 55px;
+}
+
+/* validation summary */
+.validation-summary-errors { display: inline-block; }
+    .validation-summary-errors ul { list-style: none; margin: 0; padding: 0; }
