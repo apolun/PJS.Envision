@@ -1,0 +1,91 @@
+﻿@{
+    Style.Require("Revslider");
+    
+    Script.Require("Revslider");
+    Script.Require("Revslider-Tools");
+}
+
+<div id="slider1_wrapper" class="rev_slider_wrapper fullwidthbanner-container">
+    <div id="slider1" class="rev_slider fullwidthbanner">
+        <ul>
+            <li data-transition="fade" data-slotamount="7" data-masterspeed="300">
+                <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/slider/transparent.png"))" alt="" data-bgposition="center top" data-lazyload="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/slider/bg-1.jpg"))" data-bgfit="cover" data-bgrepeat="no-repeat" />
+            </li>
+            <li data-transition="fade" data-slotamount="7" data-masterspeed="300">
+                <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/slider/transparent.png"))" alt="" data-bgposition="center top" data-lazyload="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/slider/bg-2.jpg"))" data-bgfit="cover" data-bgrepeat="no-repeat" />
+            </li>
+            <li data-transition="fade" data-slotamount="7" data-masterspeed="300">
+                <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/slider/transparent.png"))" alt="" data-bgposition="center top" data-lazyload="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/slider/bg-3.jpg"))" data-bgfit="cover" data-bgrepeat="no-repeat" />
+            </li>
+        </ul>
+        <div class="tp-bannertimer"></div>
+    </div>
+</div>
+
+@using (Script.Foot()) {
+    <script type="text/javascript">
+        var tpj = jQuery;
+        tpj.noConflict();
+        var slider1;
+
+        tpj(document).ready(function () {
+            if (tpj('#slider1').revolution == undefined) {
+                revslider_showDoubleJqueryError('#slider1');
+            }
+            else {
+                slider1 = tpj('#slider1').show().revolution({
+                    dottedOverlay: "none",
+                    delay: 9000,
+                    startwidth: 1170,
+                    startheight: 400,
+                    hideThumbs: 0,
+                    thumbWidth: 100,
+                    thumbHeight: 50,
+                    thumbAmount: 4,
+                    simplifyAll: "off",
+                    navigationType: "bullet",
+                    navigationArrows: "solo",
+                    navigationStyle: "custom",
+                    touchenabled: "on",
+                    onHoverStop: "on",
+                    nextSlideOnWindowFocus: "off",
+                    swipe_threshold: 75,
+                    swipe_min_touches: 1,
+                    drag_block_vertical: false,
+                    keyboardNavigation: "off",
+                    navigationHAlign: "center",
+                    navigationVAlign: "bottom",
+                    navigationHOffset: 0,
+                    navigationVOffset: 20,
+                    soloArrowLeftHalign: "left",
+                    soloArrowLeftValign: "center",
+                    soloArrowLeftHOffset: 0,
+                    soloArrowLeftVOffset: 0,
+                    soloArrowRightHalign: "right",
+                    soloArrowRightValign: "center",
+                    soloArrowRightHOffset: 0,
+                    soloArrowRightVOffset: 0,
+                    shadow: 0,
+                    fullWidth: "on",
+                    fullScreen: "off",
+                    spinner: "spinner0",
+                    stopLoop: "off",
+                    stopAfterLoops: -1,
+                    stopAtSlide: -1,
+                    shuffle: "off",
+                    autoHeight: "off",
+                    forceFullWidth: "off",
+                    hideThumbsOnMobile: "off",
+                    hideNavDelayOnMobile: 1500,
+                    hideBulletsOnMobile: "off",
+                    hideArrowsOnMobile: "off",
+                    hideThumbsUnderResolution: 0,
+                    hideSliderAtLimit: 0,
+                    hideCaptionAtLimit: 0,
+                    hideAllCaptionAtLilmit: 0,
+                    startWithSlide: 0
+                });
+            }
+        });
+    </script>
+}

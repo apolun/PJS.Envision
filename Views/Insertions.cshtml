@@ -10,6 +10,7 @@
 
     // the following code only runs for the homepage
     if (WorkContext.HttpContext.Request.RawUrl == Href("~/") || WorkContext.HttpContext.Request.RawUrl == Href("~//")) {
+        WorkContext.Layout.Featured.Add(New.Slider(), "0");
     }
 
     WorkContext.Layout.Footer.Add(New.BadgeOfHonor(), "0");

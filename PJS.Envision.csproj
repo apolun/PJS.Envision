@@ -132,6 +132,10 @@
     <Content Include="Content\shadow-8.png" />
     <Content Include="Content\sidebar-shadow-left.png" />
     <Content Include="Content\sidebar-shadow-right.png" />
+    <Content Include="Content\slider\bg-1.jpg" />
+    <Content Include="Content\slider\bg-2.jpg" />
+    <Content Include="Content\slider\bg-3.jpg" />
+    <Content Include="Content\slider\transparent.png" />
     <Content Include="Content\socialbar\colorful-gradient\30px%402x.png" />
     <Content Include="Content\socialbar\colorful-gradient\30px.png" />
     <Content Include="Content\socialbar\colorful-gradient\40px%402x.png" />
@@ -192,6 +196,9 @@
     <Content Include="Scripts\jquery.sharrre.min.js" />
     <Content Include="Scripts\jquery.smoothscroll.js" />
     <Content Include="Scripts\jquery.text-rotator.js" />
+    <Content Include="Scripts\jquery.themepunch.revolution.js" />
+    <Content Include="Scripts\jquery.themepunch.revolution.min.js" />
+    <Content Include="Scripts\jquery.themepunch.tools.min.js" />
     <Content Include="Scripts\jquery.touchSwipe.min.js" />
     <Content Include="Scripts\jquery.transit.min.js" />
     <Content Include="Scripts\jquery.viewport.mini.js" />
@@ -223,6 +230,52 @@
     <Content Include="Styles\responsive.min.css" />
     <Content Include="Styles\responsive.css" />
     <Content Include="Styles\retina.css" />
+    <Content Include="Styles\revslider\assets\arrowleft.png" />
+    <Content Include="Styles\revslider\assets\arrowright.png" />
+    <Content Include="Styles\revslider\assets\arrow_large_left.png" />
+    <Content Include="Styles\revslider\assets\arrow_large_right.png" />
+    <Content Include="Styles\revslider\assets\arrow_left.png" />
+    <Content Include="Styles\revslider\assets\arrow_left2.png" />
+    <Content Include="Styles\revslider\assets\arrow_right.png" />
+    <Content Include="Styles\revslider\assets\arrow_right2.png" />
+    <Content Include="Styles\revslider\assets\black50.png" />
+    <Content Include="Styles\revslider\assets\boxed_bgtile.png" />
+    <Content Include="Styles\revslider\assets\bullet.png" />
+    <Content Include="Styles\revslider\assets\bullets.png" />
+    <Content Include="Styles\revslider\assets\bullets2.png" />
+    <Content Include="Styles\revslider\assets\bullet_boxed.png" />
+    <Content Include="Styles\revslider\assets\coloredbg.png" />
+    <Content Include="Styles\revslider\assets\grain.png" />
+    <Content Include="Styles\revslider\assets\gridtile.png" />
+    <Content Include="Styles\revslider\assets\gridtile_3x3.png" />
+    <Content Include="Styles\revslider\assets\gridtile_3x3_white.png" />
+    <Content Include="Styles\revslider\assets\gridtile_white.png" />
+    <Content Include="Styles\revslider\assets\large_left.png" />
+    <Content Include="Styles\revslider\assets\large_right.png" />
+    <Content Include="Styles\revslider\assets\loader.gif" />
+    <Content Include="Styles\revslider\assets\loader2.gif" />
+    <Content Include="Styles\revslider\assets\navigdots.png" />
+    <Content Include="Styles\revslider\assets\navigdots_bgtile.png" />
+    <Content Include="Styles\revslider\assets\shadow1.png" />
+    <Content Include="Styles\revslider\assets\shadow2.png" />
+    <Content Include="Styles\revslider\assets\shadow3.png" />
+    <Content Include="Styles\revslider\assets\small_left.png" />
+    <Content Include="Styles\revslider\assets\small_left_boxed.png" />
+    <Content Include="Styles\revslider\assets\small_right.png" />
+    <Content Include="Styles\revslider\assets\small_right_boxed.png" />
+    <Content Include="Styles\revslider\assets\timer.png" />
+    <Content Include="Styles\revslider\assets\timerdot.png" />
+    <Content Include="Styles\revslider\assets\transparent.jpg" />
+    <Content Include="Styles\revslider\assets\white50.png" />
+    <Content Include="Styles\revslider\css\captions-original.css" />
+    <Content Include="Styles\revslider\css\settings.css" />
+    <Content Include="Styles\revslider\css\static-captions.css" />
+    <Content Include="Styles\revslider\font\revicons.svg" />
+    <Content Include="Styles\revslider\images\decor_inside.png" />
+    <Content Include="Styles\revslider\images\decor_inside_white.png" />
+    <Content Include="Styles\revslider\images\decor_testimonial.png" />
+    <Content Include="Styles\revslider\images\gradient\g30.png" />
+    <Content Include="Styles\revslider\images\gradient\g40.png" />
     <Content Include="Styles\rtl.css" />
     <Content Include="Styles\skins\brown.css" />
     <Content Include="Styles\skins\cyan.css" />
@@ -502,6 +555,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Slider.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\revslider\assets\arrows.psd" />
+    <Content Include="Styles\revslider\assets\bullets.psd" />
+    <Content Include="Styles\revslider\assets\small_arrows.psd" />
+    <Content Include="Styles\revslider\font\revicons.eot" />
+    <Content Include="Styles\revslider\font\revicons.ttf" />
+    <Content Include="Styles\revslider\font\revicons.woff" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
