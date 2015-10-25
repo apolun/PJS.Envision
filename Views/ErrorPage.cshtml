@@ -1,0 +1,12 @@
+﻿@{
+    WorkContext.Layout.BeforeMain.Add(New.Parts_Title(Title: T("Unhandled Exception")), "0");
+}
+
+<div class="text-center">
+    <h1 class="big-title" style="font-size: 60px;">
+        <strong>@T("500")</strong> @Html.TitleForPage(T("Oops. Something went wrong ... sorry").ToString())
+    </h1>
+    <h3>
+        @T("An unhandled exception has occurred and the request was terminated. Please refresh the page. If the error persists, go back").Text
+    </h3>
+</div>

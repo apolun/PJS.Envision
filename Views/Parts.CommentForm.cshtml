@@ -1,0 +1,52 @@
+﻿@using Orchard.Comments;
+@using Orchard.Comments.Models
+@using Orchard.Comments.Settings
+@using Orchard.Utility.Extensions;
+
+@{
+    CommentsPart commentsPart = Model.ContentPart;
+    bool canStillCommentOn = Model.CanStillComment;
+    var settings = commentsPart.TypePartDefinition.Settings.GetModel<CommentsPartSettings>();
+}
+
+<span id="comment-form-beacon"></span>
+<div id="respond" class="ui--comment-form">
+    <div class="ui--box">
+        <div class="respond-header clearfix ui--gradient ui--gradient-grey ui--gradient-grey-border-bottom">
+            <div class="pull-right">
+                <small><a rel="nofollow" id="cancel-comment-reply-link" href="#" style="display: none;">@T("Cancel reply")</a></small>
+            </div>
+            <div class="pull-left">
+                <h5 style="margin: 0; padding: 0;"><strong>@T("Leave a Reply")</strong></h5>
+            </div>
+        </div>
+        @if (!Model.ContentPart.CommentsActive || !canStillCommentOn) {
+            if (Model.ContentPart.Comments.Count > 0) {
+                <p class="comment-notes">@T("Comments have been disabled for this content.")</p>
+            }
+        }
+        else if (settings.MustBeAuthenticated && WorkContext.CurrentUser == null) {
+            <p class="comment-notes">@T("You must be authenticated in order to add a comment.")</p>
+        }
+        else if (WorkContext.CurrentUser == null && !AuthorizedFor(Permissions.AddComment)) {
+            <p class="comment-notes">
+                @T("You must {0} to comment.", Html.ActionLink(T("log on").ToString(), "LogOn",
+                                    new { Controller = "Account", Area = "Orchard.Users", ReturnUrl = string.Format("{0}#addacomment", Context.Request.RawUrl) }))
+        </p>
+        }
+        else {
+            @Html.ValidationSummary()
+            using (Html.BeginFormAntiForgeryPost(Url.Action("Create", "Comment", new { Area = "Orchard.Comments", ReturnUrl = Context.Request.ToUrlString() }), FormMethod.Post, new { id = "commentform" })) {
+                if (TempData.ContainsKey("Comments.InvalidCommentEditorShape")) {
+                    @Display(TempData["Comments.InvalidCommentEditorShape"]);
+                }
+                else {
+                    @Display(Model.EditorShape)
+                }
+                <div class="form-submit clearfix ui--gradient ui--gradient-grey">
+                    <button name="submit" type="submit" class="btn btn-primary" id="submit" value="Post Comment">@T("Post Comment")</button>
+                </div>
+            }
+        }
+    </div>
+</div>

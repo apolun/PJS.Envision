@@ -55,11 +55,11 @@
 										<div class="pp_nav pp_current_text"> \
 											<p class="currentTextHolder btn btn-small btn-grey radius-3px">0/0</p> \
 										</div> \
-										<a class="pp_close btn btn-small btn-grey radius-3px" href="#"><i class="fontawesome-remove"></i> '+ CloudFwOp.text_close +'</a> \
+										<a class="pp_close btn btn-small btn-grey radius-3px" href="#"><i class="fa fa-remove"></i> '+ CloudFwOp.text_close +'</a> \
 										<a href="#" class="pp_expand" title="Expand the image">Expand</a> \
 										<div class="pp_hoverContainer"> \
-											<a class="pp_next" href="#"><span><div class="arr arr-large arr-right"><span></span><i class="fontawesome-chevron-right"></i></div></span></a> \
-											<a class="pp_previous" href="#"><span><div class="arr arr-large arr-left"><span></span><i class="fontawesome-chevron-left"></i></div></span></a> \
+											<a class="pp_next" href="#"><span><div class="arr arr-large arr-right"><span></span><i class="fa fa-chevron-right"></i></div></span></a> \
+											<a class="pp_previous" href="#"><span><div class="arr arr-large arr-left"><span></span><i class="fa fa-chevron-left"></i></div></span></a> \
 										</div> \
 										<div id="pp_full_res"></div> \
 										<div class="pp_details"> \

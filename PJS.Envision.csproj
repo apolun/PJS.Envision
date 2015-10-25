@@ -217,6 +217,7 @@
     <Content Include="Styles\font-awesome-4.4.0\css\font-awesome.css" />
     <Content Include="Styles\font-awesome-4.4.0\css\font-awesome.min.css" />
     <Content Include="Styles\font-awesome-4.4.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Styles\fonts.css" />
     <Content Include="Styles\icomoon\css\icomoon.css" />
     <Content Include="Styles\icomoon\font\Icomoon.svg" />
     <Content Include="Styles\responsive.min.css" />
@@ -255,13 +256,37 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Blogs\Orchard.Blogs.csproj">
+      <Project>{63fbd4d9-e1da-4a7b-aa6a-d6074fe50867}</Project>
+      <Name>Orchard.Blogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Comments\Orchard.Comments.csproj">
+      <Project>{14c049fd-b35b-415a-a824-87f26b26e7fd}</Project>
+      <Name>Orchard.Comments</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Orchard.Layouts\Orchard.Layouts.csproj">
       <Project>{6bd8b2fa-f2e3-4ac8-a4c3-2925a653889a}</Project>
       <Name>Orchard.Layouts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.MediaLibrary\Orchard.MediaLibrary.csproj">
+      <Project>{73a7688a-5bd3-4f7e-adfa-ce36c5a10e3b}</Project>
+      <Name>Orchard.MediaLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Search\Orchard.Search.csproj">
+      <Project>{4be4eb01-ac56-4048-924e-2ca77f509aba}</Project>
+      <Name>Orchard.Search</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Tags\Orchard.Tags.csproj">
+      <Project>{5d0f00f0-26c9-4785-ad61-b85710c60eb0}</Project>
+      <Name>Orchard.Tags</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Modules\Orchard.Users\Orchard.Users.csproj">
       <Project>{79aed36e-abd0-4747-93d3-8722b042454b}</Project>
       <Name>Orchard.Users</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.Widgets\Orchard.Widgets.csproj">
+      <Project>{194d3ccc-1153-474d-8176-fde8d7d0d0bd}</Project>
+      <Name>Orchard.Widgets</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -354,6 +379,126 @@
     <Content Include="Views\Orchard.Users\Account\LostPassword.cshtml" />
     <Content Include="Views\Orchard.Users\Account\RegistrationPending.cshtml" />
     <Content Include="Views\Orchard.Users\Account\RequestLostPassword.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Pager.cshtml" />
+    <Content Include="Views\Pager.CurrentPage.cshtml" />
+    <Content Include="Views\Pager.First.cshtml" />
+    <Content Include="Views\Pager.Gap.cshtml" />
+    <Content Include="Views\Pager.Last.cshtml" />
+    <Content Include="Views\Pager.Next.cshtml" />
+    <Content Include="Views\Pager.Previous.cshtml" />
+    <Content Include="Views\Pager_Link.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-Blog.Detail.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-BlogPost.Summary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Fields.MediaLibraryPicker-BlogPostPart.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Common.Body-BlogPost.Summary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Comments.Count.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Tags.ShowTags.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-BlogPost.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.ListOfComments.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Comment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CommentGravatar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\CommentAuthor.cshtml" />
+    <Content Include="Views\CommentMetadata.cshtml" />
+    <Content Include="Views\CommentReplyButton.cshtml" />
+    <Content Include="Views\CommentText.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.CommentForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts.Comment.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ErrorPage.cshtml" />
+    <Content Include="Views\NotFound.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Widget.Wrapper.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\fonts\museo-sans-condensed-300.eot" />
+    <Content Include="Styles\fonts\museo-sans-condensed-300.ttf" />
+    <Content Include="Styles\fonts\museo-sans-condensed-300.woff" />
+    <Content Include="Styles\fonts\museo-sans-condensed-300.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\fonts\museo-sans-condensed-100.eot" />
+    <Content Include="Styles\fonts\museo-sans-condensed-100.ttf" />
+    <Content Include="Styles\fonts\museo-sans-condensed-100.woff" />
+    <Content Include="Styles\fonts\museo-sans-condensed-100.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\fonts\museo-sans-condensed-500.eot" />
+    <Content Include="Styles\fonts\museo-sans-condensed-500.ttf" />
+    <Content Include="Styles\fonts\museo-sans-condensed-500.woff" />
+    <Content Include="Styles\fonts\museo-sans-condensed-500.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\fonts\museo-sans-condensed-700.eot" />
+    <Content Include="Styles\fonts\museo-sans-condensed-700.ttf" />
+    <Content Include="Styles\fonts\museo-sans-condensed-700.woff" />
+    <Content Include="Styles\fonts\museo-sans-condensed-700.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Styles\fonts\museo-sans-condensed-900.eot" />
+    <Content Include="Styles\fonts\museo-sans-condensed-900.ttf" />
+    <Content Include="Styles\fonts\museo-sans-condensed-900.woff" />
+    <Content Include="Styles\fonts\museo-sans-condensed-900.woff2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Search.SearchForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Orchard.Search\Search\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Common.Body.Summary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Layout.Summary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Title.Summary.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Blogs.RecentBlogPosts.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ListByArchive.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Blogs.BlogArchives.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.TagCloud.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Orchard.Tags\Home\Index.cshtml" />
+    <Content Include="Views\Orchard.Tags\Home\Search.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

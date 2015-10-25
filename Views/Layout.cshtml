@@ -47,7 +47,7 @@
                     @Display.TopBar();
                 }
                 <div class="@((settings.ShowTopBar && settings.StickyTopBar) || settings.StickyHeader ? "sticky-wrapper" : string.Empty)">
-                    <div id="header-container" class="header-style-1 @(!settings.ShowLogoStickyHeader ? "sticky-header-layout-blocking sticky-hidden-logo" : string.Empty) logo-position-@settings.LogoPosition @(settings.LogoPosition == "center" || settings.LogoPosition == settings.NavigationPosition ? "header-layout-blocking" : string.Empty) navigation-position-@settings.NavigationPosition sticky-logo-position-@settings.StickyLogoPosition @(settings.StickyLogoPosition == "center" || settings.StickyLogoPosition == settings.StickyNavigationPosition ? "sticky-header-layout-blocking" : string.Empty) sticky-navigation-position-@settings.StickyNavigationPosition no-stuck clearfix" data-responsive="{&quot;css&quot;:{&quot;padding-bottom&quot;:{&quot;phone&quot;:20,&quot;tablet&quot;:20,&quot;widescreen&quot;:@(settings.LogoPosition == "center" || settings.LogoPosition == settings.NavigationPosition ? "20" : "0")}}}">
+                    <div id="header-container" class="@settings.HeaderStyle @(settings.HeaderStyle == "header-style-2" ? "header-layout-blocking" : string.Empty) @(!settings.ShowLogoStickyHeader ? "sticky-header-layout-blocking sticky-hidden-logo" : string.Empty) logo-position-@settings.LogoPosition @(settings.LogoPosition == "center" || settings.LogoPosition == settings.NavigationPosition ? "header-layout-blocking" : string.Empty) navigation-position-@settings.NavigationPosition sticky-logo-position-@settings.StickyLogoPosition @(settings.StickyLogoPosition == "center" || settings.StickyLogoPosition == settings.StickyNavigationPosition ? "sticky-header-layout-blocking" : string.Empty) sticky-navigation-position-@settings.StickyNavigationPosition no-stuck clearfix" data-responsive="{&quot;css&quot;:{&quot;padding-bottom&quot;:{&quot;phone&quot;:20,&quot;tablet&quot;:20,&quot;widescreen&quot;:@(settings.LogoPosition == "center" || settings.LogoPosition == settings.NavigationPosition ? "20" : "0")}}}">
                         <div id="header-container-background"></div>
                         @if (settings.ShowTopBar && settings.StickyTopBar) {
                             @Display.TopBar();
@@ -161,6 +161,5 @@
                 </footer>
             }
         </div>
-
     </div>
 </div>

@@ -1,0 +1,38 @@
+﻿@using Orchard.Comments.Models
+@using Orchard.ContentManagement
+
+@{
+    CommentPart comment = Model.ContentPart;
+    CommentsPart comments = comment.CommentedOnContentItem.As<CommentsPart>();
+
+    var children = New.List(Items: Model.Items);
+    children.Classes.Add("children");
+}
+
+<div id="comment-@comment.Id" class="comment-container">
+    <div class="comment-avatar">
+        @Display.CommentGravatar(ContentPart: comment)
+    </div>
+    <div class="comment-text ui--box ui--gradient ui--gradient-grey clearfix">
+        <div class="meta ui--gradient ui--gradient-grey ui--gradient-grey-border-bottom clearfix">
+            <div class="ui--comments-arrow">
+                <i class="fa fa-caret-left"></i>
+            </div>
+            <div class="pull-left">
+                <strong>@Display.CommentAuthor(ContentPart: comment)</strong><span class="dash">–</span> <small>@Display.CommentMetadata(ContentPart: comment)</small>
+            </div>
+            @if (comments.ThreadedComments) {
+                <div class="pull-right">
+                    <small>@Display.CommentReplyButton(ContentPart: comment)</small>
+                </div>
+            }
+        </div>
+        <div class="description">
+            @Display.CommentText(ContentPart: Model.ContentPart, ContentItem: Model.ContentItem)
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+
+@Display(children)

@@ -4,6 +4,10 @@
     List<SelectListItem> layoutStyles = new List<SelectListItem>();
     layoutStyles.Add(new SelectListItem { Text = "Boxed", Value = "boxed" });
     layoutStyles.Add(new SelectListItem { Text = "Wide", Value = "wide" });
+
+    List<SelectListItem> headerStyles = new List<SelectListItem>();
+    headerStyles.Add(new SelectListItem { Text = "Header Style 1", Value = "header-style-1" });
+    headerStyles.Add(new SelectListItem { Text = "Header Style 2", Value = "header-style-2" });
     
     List<SelectListItem> logoPositions = new List<SelectListItem>();
     logoPositions.Add(new SelectListItem { Text = "Left", Value = "left" });
@@ -24,6 +28,13 @@
     stickyNavigationPositions.Add(new SelectListItem { Text = "Left", Value = "left" });
     stickyNavigationPositions.Add(new SelectListItem { Text = "Center", Value = "center" });
     stickyNavigationPositions.Add(new SelectListItem { Text = "Right", Value = "right" });
+
+    List<SelectListItem> blogStyles = new List<SelectListItem>();
+    blogStyles.Add(new SelectListItem { Text = "Large", Value = "large" });
+    blogStyles.Add(new SelectListItem { Text = "Medium", Value = "medium" });
+    blogStyles.Add(new SelectListItem { Text = "Grid", Value = "grid" });
+    blogStyles.Add(new SelectListItem { Text = "Grid Masonry", Value = "grid-masonry" });
+    blogStyles.Add(new SelectListItem { Text = "Mini", Value = "mini" });
 }
 
 @using (Script.Foot()) {
@@ -158,6 +169,10 @@
     </fieldset>
 </div>
 <fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Select a Header Style</legend>
+    @Html.DropDownListFor(m => m.HeaderStyle, headerStyles.AsEnumerable())
+</fieldset>
+<fieldset style="border-bottom: 1px solid #000000;">
     <legend>Logo Position</legend>
     <span class="hint">@T("Select which side of the header to display the logo.")</span>
     @Html.DropDownListFor(m => m.LogoPosition, logoPositions.AsEnumerable())
@@ -194,8 +209,13 @@
     <span class="hint">@T("Provide a fully qualified URL to an image to use as the Title Bar background. See /Themes/PJS.Envision/Content/title-bar/... for samples.")</span>
     @Html.TextBoxFor(m => m.TitleBarBackgroundImageUrl, new { style = "width: 100%;", placeholder = "/Themes/PJS.Envision/Content/title-bar/3.jpg" })
 </fieldset>
-<fieldset>
+<fieldset style ="border-bottom: 1px solid #000000;">
     <legend>Sticky Footer</legend>
     <span class="hint">@T("Select this option to lock the footer at the bottom of the page.")</span>
     @Html.CheckBoxFor(m => m.StickyFooter)
+</fieldset>
+<fieldset>
+    <legend>Blog Style</legend>
+    <span class="hint">@T("Select which blog style to use for the blog summary.")</span>
+    @Html.DropDownListFor(m => m.BlogStyle, blogStyles.AsEnumerable())
 </fieldset>

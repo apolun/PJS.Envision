@@ -1,0 +1,23 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Utility.Extensions;
+@using PJS.Envision.Models;
+
+@{
+    var settings = WorkContext.CurrentSite.As<EnvisionThemeSettingsPart>();
+
+    Model.Classes.Add("ui--blog ui--blog-wrapper ui--pass");
+    var tag = Tag(Model, "div");
+}
+
+@if (settings.BlogStyle == "grid" || settings.BlogStyle == "grid-masonry" || settings.BlogStyle == "mini") {
+    <style type="text/css">
+        ul.blog-posts.content-items { width: 100%; margin-left: 0; }
+            ul.blog-posts.content-items li { margin-left: 30px; margin-bottom: 12px; min-height: 1px; width: 31%; display: block; float: left; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+                ul.blog-posts.content-items li:first-child { margin-left: 0; }
+                ul.blog-posts.content-items li:nth-child(4) { margin-left: 0; }
+    </style>
+}
+
+@tag.StartElement
+@Display(Model.Content)
+@tag.EndElement

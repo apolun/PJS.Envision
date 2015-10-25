@@ -1473,15 +1473,15 @@ ul.list-roman li {
 	list-style-position: outside;
 }
 
-ul.list-font-icon .fontawesome-angle-right,
-ul.list-font-icon .fontawesome-plus-sign-alt,
-ul.list-font-icon .fontawesome-minus-sign-alt
+ul.list-font-icon .fa-angle-right,
+ul.list-font-icon .fa-plus-sign-alt,
+ul.list-font-icon .fa-minus-sign-alt
 {
 	font-size: 18px;
 }
 
-ul.list-font-icon li .fontawesome-ok,
-ul.list-font-icon li .fontawesome-angle-right {
+ul.list-font-icon li .fa-ok,
+ul.list-font-icon li .fa-angle-right {
 	top: 3px;
 }
 
@@ -3260,7 +3260,7 @@ ul.list-roman {
 	position: relative;
 }
 
-.ui--twitter-style-plain .ui--icon.fontawesome-twitter {
+.ui--twitter-style-plain .ui--icon.fa-twitter {
 	float: left;
 	margin-right: 12px;
 }
@@ -6375,7 +6375,7 @@ html.cssanimations .ui--animation-fire.fx--rotatein-downright {
 	color: #ed1c24 !important;
 }
 
-.ui--meta-like-shortcode .ui--meta-like a .fontawesome-heart {
+.ui--meta-like-shortcode .ui--meta-like a .fa-heart {
 	font-size: 48px;
     position: absolute;
     top: 0;
@@ -6383,7 +6383,7 @@ html.cssanimations .ui--animation-fire.fx--rotatein-downright {
     margin-left: -24px;
 }
 
-.ui--meta-like-shortcode .ui--meta-like a:hover .fontawesome-heart {
+.ui--meta-like-shortcode .ui--meta-like a:hover .fa-heart {
 	-webkit-animation: pulsate 0.7s infinite ease-out;
 	-moz-animation: pulsate 0.7s infinite ease-out;
 	-o-animation: pulsate 0.7s infinite ease-out;
@@ -8980,8 +8980,8 @@ header #logo {
 	white-space: nowrap;
 }
 
-#top-bar-text [class^="fontawesome-"],
-#top-bar-text [class*=" fontawesome-"] {
+#top-bar-text [class^="fa-"],
+#top-bar-text [class*=" fa-"] {
 	font-size: 14px;
 	margin-right: 4px;
 }
@@ -9043,8 +9043,8 @@ header #logo {
 	text-align: center;
 }
 
-#top-bar .helper--extract-icon [class^="fontawesome-"],
-#top-bar .helper--extract-icon [class*=" fontawesome-"] {
+#top-bar .helper--extract-icon [class^="fa-"],
+#top-bar .helper--extract-icon [class*=" fa-"] {
 	position: absolute;
 	top: 50%;
 	margin-top: -9px;
@@ -9123,8 +9123,8 @@ header #logo {
 	margin-left: -1px;
 }
 
-#top-bar .ui--custom-menu li > a [class^="fontawesome-angle-"],
-#top-bar .ui--custom-menu li > a [class*=" fontawesome-angle-"] {
+#top-bar .ui--custom-menu li > a [class^="fa-angle-"],
+#top-bar .ui--custom-menu li > a [class*=" fa-angle-"] {
 	margin-right: -6px;
 	margin-left: 8px;
 }

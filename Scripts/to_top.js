@@ -8,7 +8,7 @@
 	$.fn.UItoTop = function(options) {
 
  		var defaults = {
-    			text: '<i class="fontawesome-angle-up px24"></i>',
+    			text: '<i class="fa fa-angle-up px24"></i>',
     			min: 200,
     			inDelay:600,
     			outDelay:400,

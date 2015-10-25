@@ -178,20 +178,20 @@ jQuery(document).ready(function(){
 							title_bordered.addClass('with-navigation');
 							title_bordered.find('.ui--title-navigation').remove();
 							title_bordered.append( jQuery('<div/>').addClass('ui--title-navigation') );
-							title_bordered.find('.ui--title-navigation').html('<span class=\"arr arr-small arr-plain arr-left ui--carosuel-prev\"><span></span><i class=\"fontawesome-angle-left px18\"></i></span> <span class=\"arr arr-small arr-plain ui--carosuel-next\"><span></span><i class=\"fontawesome-angle-right px18\"></i></span>');
+							title_bordered.find('.ui--title-navigation').html('<span class=\"arr arr-small arr-plain arr-left ui--carosuel-prev\"><span></span><i class=\"fa fa-angle-left px18\"></i></span> <span class=\"arr arr-small arr-plain ui--carosuel-next\"><span></span><i class=\"fa fa-angle-right px18\"></i></span>');
 							title_bordered.find('.ui--title-navigation > .ui--carosuel-prev').click( to_prev );
 							title_bordered.find('.ui--title-navigation > .ui--carosuel-next').click( to_next );
 						} else if ( title_widget.length ) {
 							title_widget.addClass('with-navigation');
 							title_widget.find('.ui--title-navigation').remove();
 							title_widget.append( jQuery('<div/>').addClass('ui--title-navigation') );
-							title_widget.find('.ui--title-navigation').html('<span class=\"arr arr-plain arr-left ui--carosuel-prev\"><span></span><i class=\"fontawesome-angle-left px18\"></i></span> <span class=\"arr arr-plain ui--carosuel-next\"><span></span><i class=\"fontawesome-angle-right px18\"></i></span>');
+							title_widget.find('.ui--title-navigation').html('<span class=\"arr arr-plain arr-left ui--carosuel-prev\"><span></span><i class=\"fa fa-angle-left px18\"></i></span> <span class=\"arr arr-plain ui--carosuel-next\"><span></span><i class=\"fa fa-angle-right px18\"></i></span>');
 							title_widget.find('.ui--title-navigation > .ui--carosuel-prev').click( to_prev );
 							title_widget.find('.ui--title-navigation > .ui--carosuel-next').click( to_next );
 						} else {
 							that.find('.ui--carousel-navigation').remove();
 							that.append( jQuery('<div/>').addClass('ui--carousel-navigation clearfix') );
-							that.find('.ui--carousel-navigation').html('<span class=\"arr arr-normal arr-left ui--carosuel-prev\"><span></span><i class=\"fontawesome-chevron-left px18\"></i></span> <span class=\"arr arr-normal ui--carosuel-next\"><span></span><i class=\"fontawesome-chevron-right px18\"></i></span>');
+							that.find('.ui--carousel-navigation').html('<span class=\"arr arr-normal arr-left ui--carosuel-prev\"><span></span><i class=\"fa fa-chevron-left px18\"></i></span> <span class=\"arr arr-normal ui--carosuel-next\"><span></span><i class=\"fa fa-chevron-right px18\"></i></span>');
 							that.find('.ui--carousel-navigation > .ui--carosuel-prev').click( to_prev );
 							that.find('.ui--carousel-navigation > .ui--carosuel-next').click( to_next );
 						}
@@ -256,7 +256,7 @@ jQuery(document).ready(function(){
 
 					that.find('.ui--content-box-gallery-navigation').remove();
 					that.append( jQuery('<div/>').addClass('ui--content-box-gallery-navigation') );
-					that.find('.ui--content-box-gallery-navigation').html('<span class=\"arr arr-normal arr-left ui--carosuel-prev\"><span></span><i class=\"fontawesome-chevron-left px18\"></i></span> <span class=\"arr arr-normal ui--carosuel-next\"><span></span><i class=\"fontawesome-chevron-right px18\"></i></span>');
+					that.find('.ui--content-box-gallery-navigation').html('<span class=\"arr arr-normal arr-left ui--carosuel-prev\"><span></span><i class=\"fa fa-chevron-left px18\"></i></span> <span class=\"arr arr-normal ui--carosuel-next\"><span></span><i class=\"fa fa-chevron-right px18\"></i></span>');
 					that.find('.ui--content-box-gallery-navigation > .ui--carosuel-prev').click( to_prev );
 					that.find('.ui--content-box-gallery-navigation > .ui--carosuel-next').click( to_next );
 					
@@ -981,7 +981,7 @@ jQuery(document).ready(function(){
 
 					that.find('.ui--blog-gallery-navigation').remove();
 					that.append( jQuery('<div/>').addClass('ui--blog-gallery-navigation') );
-					that.find('.ui--blog-gallery-navigation').html('<span class=\"arr arr-normal arr-left ui--carosuel-prev\"><span></span><i class=\"fontawesome-chevron-left px18\"></i></span> <span class=\"arr arr-normal ui--carosuel-next\"><span></span><i class=\"fontawesome-chevron-right px18\"></i></span>');
+					that.find('.ui--blog-gallery-navigation').html('<span class=\"arr arr-normal arr-left ui--carosuel-prev\"><span></span><i class=\"fa fa-chevron-left px18\"></i></span> <span class=\"arr arr-normal ui--carosuel-next\"><span></span><i class=\"fa fa-chevron-right px18\"></i></span>');
 					that.find('.ui--blog-gallery-navigation > .ui--carosuel-prev').click( to_prev );
 					that.find('.ui--blog-gallery-navigation > .ui--carosuel-next').click( to_next );
 				
@@ -1370,8 +1370,8 @@ jQuery(document).ready(function(){
 		var that = jQuery(this);
 
 		that.find( '.caption-primary' ).wrapInner('<div />');
-		that.find( '.tp-leftarrow.custom' ).html( '<div class="slider-navigation-wrapper"><i class="fontawesome-chevron-left"></i></div>' );
-		that.find( '.tp-rightarrow.custom' ).html( '<div class="slider-navigation-wrapper"><i class="fontawesome-chevron-right"></i></div>' );
+		that.find( '.tp-leftarrow.custom' ).html( '<div class="slider-navigation-wrapper"><i class="fa fa-chevron-left"></i></div>' );
+		that.find( '.tp-rightarrow.custom' ).html( '<div class="slider-navigation-wrapper"><i class="fa fa-chevron-right"></i></div>' );
 		that.find( '.tp-bullets.custom > .bullet' ).html( '<div class="ui--bullets"><div class="ui--bullets-color ui--accent-gradient"></div></div>' );
 
 	});
@@ -3022,7 +3022,7 @@ jQuery(document).ready(function(){
 			var	title = jQuery('<span/>').addClass('ui--select-title');
 			that.before( title );
 
-			var	arrow = jQuery('<i/>').addClass('ui--icon icon fontawesome-angle-down ui--select-arrow');
+			var	arrow = jQuery('<i/>').addClass('ui--icon icon fa fa-angle-down ui--select-arrow');
 			that.before( arrow );
 
 

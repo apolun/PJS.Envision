@@ -1,0 +1,20 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Widgets.Models;
+
+@{
+    var widgetPart = ((IContent)Model.ContentItem).As<WidgetPart>();
+    var tag = Tag(Model, "div");
+}
+
+@tag.StartElement
+@if ((widgetPart.RenderTitle && HasText(widgetPart.Title)) || Model.Header != null) {
+    if ((widgetPart.RenderTitle && HasText(widgetPart.Title))) {
+        <h4 class="ui--widget-title"><span>@widgetPart.Title</span></h4>
+    }
+    @Display(Model.Header)
+}
+@Display(Model.Child)
+@if (Model.Footer != null) {
+    @Display(Model.Footer)
+}
+@tag.EndElement

@@ -58,5 +58,9 @@ namespace PJS.Envision.Models {
             get { return this.Retrieve(r => r.StickyFooter, false); }
             set { this.Store(r => r.StickyFooter, value); }
         }
+        public string BlogStyle {
+            get { return this.Retrieve(r => r.BlogStyle, "large"); }
+            set { this.Store(r => r.BlogStyle, value); }
+        }
     }
 }

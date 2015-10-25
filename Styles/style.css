@@ -133,8 +133,8 @@ p {
 	position: relative;
 }
 
-.helper--vertical-center-icon > [class^="fontawesome-"],
-.helper--vertical-center-icon > [class*=" fontawesome-"] {
+.helper--vertical-center-icon > [class^="fa-"],
+.helper--vertical-center-icon > [class*=" fa-"] {
 		position: absolute;
 		top: 50%;
 		margin-top: -9px;
@@ -965,8 +965,8 @@ label, input, button, select, textarea {
 	margin-left: -4px;
 }
 
-.arr-small.arr-plain .fontawesome-angle-left,
-.arr-small.arr-plain .fontawesome-angle-right {
+.arr-small.arr-plain .fa-angle-left,
+.arr-small.arr-plain .fa-angle-right {
 	margin-top: 4px;
 }
 
@@ -1122,8 +1122,8 @@ footer .arr:hover span {
 	 opacity  : .5;
 }
 
-.ui--pagination > li .fontawesome-angle-left { margin-right: 6px; }
-.ui--pagination > li .fontawesome-angle-right { margin-left: 6px; }
+.ui--pagination > li .fa-angle-left { margin-right: 6px; }
+.ui--pagination > li .fa-angle-right { margin-left: 6px; }
 
 /*---------------------------*/
 /*  Loading
@@ -1153,7 +1153,7 @@ footer .arr:hover span {
 	padding: 30px 0 30px;
 }
 
-.ui--loading-progress .fontawesome-spin {
+.ui--loading-progress .fa-spin {
 	font-size: 18px;
 	-moz-animation: spin 1s infinite linear !important;
 	-o-animation: spin 1s infinite linear !important;
@@ -1167,7 +1167,7 @@ footer .arr:hover span {
 	margin: 0;
 }
 
-.ui--loading-progress.loaded .fontawesome-spin {}
+.ui--loading-progress.loaded .fa-spin {}
 
 /*---------------------------*/
 /*  Bullets

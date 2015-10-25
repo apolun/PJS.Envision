@@ -22,6 +22,7 @@ namespace PJS.Envision {
             manifest.DefineScript("TextRotator").SetUrl("jquery.text-rotator.js").SetVersion("1.0").SetDependencies("jQuery");
             manifest.DefineScript("Viewport-Mini").SetUrl("jquery.viewport.mini.js").SetDependencies("jQuery");
             manifest.DefineScript("Flexslider").SetUrl("jquery.flexslider.js").SetVersion("2.5.0").SetDependencies("jQuery");
+            manifest.DefineScript("Sharrre").SetUrl("jquery.sharrre.min.js", "jquery.sharrre.js").SetVersion("1.3.3").SetDependencies("jQuery");
             manifest.DefineScript("Envision-Custom").SetUrl("envision-custom.js").SetDependencies("jQuery");
 
             // CSS Files
@@ -35,6 +36,7 @@ namespace PJS.Envision {
             manifest.DefineStyle("Retina").SetUrl("retina.css");
             manifest.DefineStyle("Font-Awesome").SetUrl("font-awesome-4.4.0/css/font-awesome.min.css", "font-awesome-4.4.0/css/font-awesome.css").SetVersion("4.4.0");
             manifest.DefineStyle("Icomoon").SetUrl("icomoon/css/icomoon.css");
+            manifest.DefineStyle("Fonts").SetUrl("fonts.css");
             manifest.DefineStyle("Envision-Custom").SetUrl("envision-custom.css");
         }
     }
