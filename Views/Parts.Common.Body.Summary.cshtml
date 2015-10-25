@@ -1,0 +1,20 @@
+﻿@using Orchard.ContentManagement;
+@using PJS.Envision.Models;
+
+@*doing excerpt generation on the way out for now so we don't stick ourselves with needing to regen excerpts for existing data
+    also, doing this here, inline, until we have a pluggable processing model (both in and out)
+    also, ...this is ugly *@
+@{
+    var settings = WorkContext.CurrentSite.As<EnvisionThemeSettingsPart>();
+
+    Orchard.ContentManagement.ContentItem contentItem = Model.ContentPart.ContentItem;
+    string bodyHtml = Model.Html.ToString();
+    var body = new HtmlString(Html.Excerpt(bodyHtml, 350.ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+}
+
+<p>
+    @body
+    <span class="more-link">
+        <a class="btn btn-small btn-grey" href="@Url.ItemDisplayUrl(contentItem)" title="">@T("Read More")</a>
+    </span>
+</p>

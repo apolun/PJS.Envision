@@ -1,0 +1,36 @@
+﻿@model Orchard.Comments.Models.CommentPart
+
+@if (WorkContext.CurrentUser == null) {
+    <div class="ui-row row-fluid">
+        <div class="ui-column span4">
+            <p class="comment-form-author">
+                @Html.LabelFor(m => m.Author, T("Name"))
+                @Html.TextBoxFor(m => m.Author)
+            </p>
+        </div>
+        <div class="ui-column span4">
+            <p class="comment-form-email">
+                @Html.LabelFor(m => m.Email, T("Email"))
+                @Html.TextBoxFor(m => m.Email)
+            </p>
+        </div>
+        <div class="ui-column span4">
+            <p class="comment-form-url">
+                @Html.LabelFor(m => m.SiteName, T("Website"))
+                @Html.TextBoxFor(m => m.SiteName)
+            </p>
+        </div>
+    </div>
+}
+else {
+    @Html.Hidden("Name", WorkContext.CurrentUser.UserName ?? "")
+    @Html.Hidden("Email", WorkContext.CurrentUser.Email ?? "")
+}
+
+<p class="comment-form-comment">
+    @Html.LabelFor(m => m.CommentText, T("Comment"))
+    @Html.TextAreaFor(m => m.CommentText, new { rows = 8, cols = 45, id = "comment" })
+
+    @Html.HiddenFor(m => m.CommentedOn)
+    @Html.HiddenFor(m => m.RepliedOn)
+</p>

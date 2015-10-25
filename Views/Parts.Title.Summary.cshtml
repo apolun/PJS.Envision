@@ -1,0 +1,6 @@
+@{
+    Orchard.ContentManagement.ContentItem contentItem = Model.ContentPart.ContentItem;
+    string title = Model.Title.ToString();
+}
+
+<h3 class="entry-title clearfix" style="font-family: 'Museo Sans Condensed 500';">@Html.ItemDisplayLink(title, contentItem)</h3>

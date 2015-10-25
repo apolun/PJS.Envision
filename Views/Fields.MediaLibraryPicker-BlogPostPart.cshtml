@@ -1,0 +1,56 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.MediaLibrary.Fields
+@using Orchard.MediaLibrary.Models
+@using Orchard.Utility.Extensions;
+
+@{
+    var field = (MediaLibraryPickerField)Model.ContentField;
+    string name = field.DisplayName;
+    var contents = field.MediaParts;
+}
+
+@if (contents.Count() > 1) {
+    <div class="ui--blog-media">
+        <div class="ui--blog-gallery" data-options="{'effect':'fade','auto_rotate':false,'rotate_time':false}">
+            <div class="slides">
+                @foreach (var mediapart in contents) {
+                    if (mediapart.MimeType.StartsWith("image")) {
+                        <div class="ui--blog-gallery-item">
+                            <img class="ui--blog-gallery-image" src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" />
+                        </div>
+                    }
+                }
+            </div>
+            <div class="ui--blog-gallery-navigation"></div>
+        </div>
+    </div>
+}
+else if (contents.Count() == 1) {
+    <div class="ui--blog-media">
+        @foreach (var mediapart in contents) {
+            if (mediapart.MimeType.StartsWith("image")) {
+                <a class="ui--blog-link" href="#">
+                    <img class="ui--blog-image" src="@mediapart.MediaUrl" alt="@mediapart.AlternateText">
+                </a>
+            }
+            else if (mediapart.MimeType.StartsWith("video")) {
+                <div class="ui--blog-video clearfix">
+                    <div class="ui--video-wrapper clearfix">
+                        <div class="ui--video ui--video-16-9">
+                            <iframe src="@mediapart.MediaUrl"></iframe>
+                        </div>
+                    </div>
+                </div>
+            }
+            else if (mediapart.MimeType == "text/html") {
+                <div class="ui--blog-video clearfix">
+                    <div class="ui--video-wrapper clearfix">
+                        <div class="ui--video ui--video-16-9">
+                            @Html.Raw(mediapart.As<OEmbedPart>()["html"])
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+}

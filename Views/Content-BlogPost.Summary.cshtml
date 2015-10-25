@@ -1,0 +1,138 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Tags.ViewModels
+@using PJS.Envision.Models;
+
+@{
+    var settings = WorkContext.CurrentSite.As<EnvisionThemeSettingsPart>();
+    var blogPost = Model.ContentItem;
+}
+
+@if (settings.BlogStyle == "large") {
+    <div class="ui--blog-item clearfix layout--standard">
+        @Display(Model.Media)
+        <div class="ui--blog-content-wrapper">
+            <div class="ui--blog-header">
+                <h3 class="ui--blog-title entry-title clearfix"><a class="ui--blog-link" href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
+                <div class="ui--blog-metas clearfix">
+                    <div class="ui--blog-metas-right pull-right">
+                        <span class="ui--meta-comment"><a href="@Url.ItemDisplayUrl((IContent)blogPost)#comments"><i class="fa fa-comment px14"></i> @Display(Model.CommentsCount)</a></span>
+                    </div>
+                    <div class="ui--blog-metas-left">
+                        <span class="ui--meta-author">by <a href="/Search?q=@blogPost.CommonPart.Owner.UserName">@blogPost.CommonPart.Owner.UserName</a></span>
+                        <span class="ui--blog-separator">/</span>
+                        <span class="datetime">
+                            <time class="entry-date date updated" datetime="@blogPost.CommonPart.CreatedUtc.ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ")">@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("MMMM d, yyyy")</time>
+                        </span>
+                        @if (Model.Tags.Items.Count > 0 && ((IEnumerable<ShowTagViewModel>)Model.Tags.Items[0].Tags).Any()) {
+                            <span class="ui--blog-separator">/</span>
+                            <span class="ui--meta-categories">@Display(Model.Tags)</span>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="ui--blog-content">
+                @Display(Model.Summary)
+            </div>
+        </div>
+    </div>
+}
+
+else if (settings.BlogStyle == "medium") {
+    <div class="ui--blog-item clearfix layout--medium">
+        @Display(Model.Media)
+        <div class="ui--blog-side ui--blog-date ui--accent-gradient-hover-parent ui--box">
+            <h3>
+                <span class="ui--blog-date-day ui--accent-gradient-hover">@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("dd")</span>
+            </h3>
+            <h6 class="ui--blog-date-month ui--gradient ui--gradient-grey">
+                <span>@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("MMM")</span>
+                <span>@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("yyyy")</span>
+            </h6>
+        </div>
+        <div class="ui--blog-content-wrapper">
+            <div class="ui--blog-header">
+                <h3 class="ui--blog-title entry-title clearfix"><a class="ui--blog-link" href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
+                <div class="ui--blog-metas clearfix">
+                    <div class="ui--blog-metas-right pull-right">
+                        <span class="ui--meta-comment"><a href="@Url.ItemDisplayUrl((IContent)blogPost)#comments"><i class="fa fa-comment px14"></i> @Display(Model.CommentsCount)</a></span>
+                    </div>
+                    <div class="ui--blog-metas-left">
+                        <span class="datetime">
+                            <time class="entry-date date updated" datetime="@blogPost.CommonPart.CreatedUtc.ToString("yyyy-MM-ddTHH:mm:ss.fffffffZ")">@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("MMMM d, yyyy")</time>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui--blog-content">
+                @Display(Model.Summary)
+            </div>
+        </div>
+    </div>
+}
+
+else if (settings.BlogStyle == "grid") {
+    <div class="ui--block ui--content-item ui--pass ui--animation">
+        <div class="ui--content-box ui--box">
+            <div class="ui--content-box-header">
+                @Display(Model.Media)
+                <a class="ui--content-box-link" href="@Url.ItemDisplayUrl((IContent)blogPost)">
+                    <div class="ui--content-box-title ui--gradient ui--gradient-grey on--hover clearfix text-center">
+                        <h5 class="ui--content-box-title-text">@blogPost.TitlePart.Title</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="ui--content-box-content">
+                <div class="ui--content-box-content-text">
+                    @Display(Model.Summary)
+                </div>
+            </div>
+        </div>
+        <div class="ui--shadow ui--shadow-type-8 ui--shadow-abs ui--shadow-reset clearfix">
+            <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/shadow-8.png"))">
+        </div>
+    </div>
+}
+
+else if (settings.BlogStyle == "grid-masonry") {
+    <div class="ui--block ui--content-item ui--pass ui--animation">
+        <div class="ui--content-box ui--box">
+            <div class="ui--content-box-header">
+                @Display(Model.Media)
+                <a class="ui--content-box-link" href="@Url.ItemDisplayUrl((IContent)blogPost)">
+                    <div class="ui--content-box-title ui--gradient ui--gradient-grey on--hover clearfix text-center">
+                        <h5 class="ui--content-box-title-text">@blogPost.TitlePart.Title</h5>
+                    </div>
+                </a>
+            </div>
+            <div class="ui--content-box-content">
+                <div class="ui--content-box-content-text">
+                    @Display(Model.Summary)
+                </div>
+            </div>
+        </div>
+        <div class="ui--shadow ui--shadow-type-8 ui--shadow-abs ui--shadow-reset clearfix">
+            <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/shadow-8.png"))">
+        </div>
+    </div>
+}
+
+else if (settings.BlogStyle == "mini") {
+    <div class="ui--blog-item ui--animation ui--accent-gradient-hover-parent clearfix layout--mini">
+        <div class="ui--blog-side ui--blog-date ui--accent-gradient-hover-parent ui--box">
+            <h3>
+                <span class="ui--blog-date-day ui--accent-gradient-hover">@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("dd")</span>
+            </h3>
+            <h6 class="ui--blog-date-month ui--gradient ui--gradient-grey">
+                <span>@blogPost.CommonPart.CreatedUtc.ToLocalTime().ToString("MMM")</span>
+            </h6>
+        </div>
+        <div class="ui--blog-content-wrapper">
+            <div class="ui--blog-header">
+                <h5 class="ui--blog-title entry-title"><a class="ui--blog-link" href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h5>
+            </div>
+            <div class="ui--blog-content">
+                @Display(Model.Summary)
+            </div>
+        </div>
+    </div>
+}

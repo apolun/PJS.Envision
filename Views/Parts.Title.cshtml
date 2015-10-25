@@ -1,0 +1,12 @@
+@{
+    Layout.Title = Model.Title;
+}
+
+<div id="titlebar-text">
+    <h2 id="titlebar-title">@Model.Title</h2>
+    @if (Model.SubTitle != null) {
+        <div class="titlebar-text-content">
+            <p>@Model.SubTitle</p>
+        </div>
+    }
+</div>

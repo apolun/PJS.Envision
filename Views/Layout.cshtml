@@ -1,0 +1,165 @@
+﻿@using Orchard.ContentManagement;
+@using PJS.Envision.Models;
+
+@functions {
+    // To support the layout classifaction below. Implementing as a razor function because we can, could otherwise be a Func<string[], string, string> in the code block following.
+    string CalcuClassify(string[] zoneNames, string classNamePrefix) {
+        var zoneCounter = 0;
+        var zoneNumsFilled = string.Join("", zoneNames.Select(zoneName => { ++zoneCounter; return Model[zoneName] != null ? zoneCounter.ToString() : ""; }).ToArray());
+        return HasText(zoneNumsFilled) ? classNamePrefix + zoneNumsFilled : "";
+    }
+
+    int CalcuClassify(string[] zoneNames) {
+        var zoneCounter = 0;
+        var zoneNumsFilled = string.Join("", zoneNames.Select(zoneName => { ++zoneCounter; return Model[zoneName] != null ? zoneCounter.ToString() : ""; }).ToArray());
+        return HasText(zoneNumsFilled) ? zoneNumsFilled.Length : 0;
+    }
+}
+
+@{
+    Display.Insertions();
+
+    var settings = WorkContext.CurrentSite.As<EnvisionThemeSettingsPart>();
+
+    /* Some useful shortcuts or settings
+    ***************************************************************/
+
+    Func<dynamic, dynamic> Zone = x => Display(x); // Zone as an alias for Display to help make it obvious when we're displaying zones
+
+    /* Layout classification based on filled zones
+    ***************************************************************/
+
+    var asideClass = CalcuClassify(new[] { "AsideFirst", "AsideSecond" }, "aside-"); // for aside-1, aside-2 or aside-12 if any of the aside zones are filled
+
+    var tripelClass = "span" + (12 / (CalcuClassify(new[] { "TripelFirst", "TripelSecond", "TripelThird" }) != 0 ? CalcuClassify(new[] { "TripelFirst", "TripelSecond", "TripelThird" }) : 1)); // for tripel-1, tripel-2, etc. if any of the tripel zones are filled
+
+    var footerQuadClass = "span" + (12 / (CalcuClassify(new[] { "FooterQuadFirst", "FooterQuadSecond", "FooterQuadThird", "FooterQuadFourth" }) != 0 ? CalcuClassify(new[] { "FooterQuadFirst", "FooterQuadSecond", "FooterQuadThird", "FooterQuadFourth" }) : 1)); // for quad-1, quad-2, etc. if any of the quad zones are filled
+}
+
+<div id="side-panel-pusher">
+    <div id="main-container">
+        <div id="page-wrap">
+            <header id="page-header" class="clearfix">
+                @if (Model.Header != null) {
+                    @Zone(Model.Header)
+                }
+                @if (settings.ShowTopBar && !settings.StickyTopBar) {
+                    @Display.TopBar();
+                }
+                <div class="@((settings.ShowTopBar && settings.StickyTopBar) || settings.StickyHeader ? "sticky-wrapper" : string.Empty)">
+                    <div id="header-container" class="@settings.HeaderStyle @(settings.HeaderStyle == "header-style-2" ? "header-layout-blocking" : string.Empty) @(!settings.ShowLogoStickyHeader ? "sticky-header-layout-blocking sticky-hidden-logo" : string.Empty) logo-position-@settings.LogoPosition @(settings.LogoPosition == "center" || settings.LogoPosition == settings.NavigationPosition ? "header-layout-blocking" : string.Empty) navigation-position-@settings.NavigationPosition sticky-logo-position-@settings.StickyLogoPosition @(settings.StickyLogoPosition == "center" || settings.StickyLogoPosition == settings.StickyNavigationPosition ? "sticky-header-layout-blocking" : string.Empty) sticky-navigation-position-@settings.StickyNavigationPosition no-stuck clearfix" data-responsive="{&quot;css&quot;:{&quot;padding-bottom&quot;:{&quot;phone&quot;:20,&quot;tablet&quot;:20,&quot;widescreen&quot;:@(settings.LogoPosition == "center" || settings.LogoPosition == settings.NavigationPosition ? "20" : "0")}}}">
+                        <div id="header-container-background"></div>
+                        @if (settings.ShowTopBar && settings.StickyTopBar) {
+                            @Display.TopBar();
+                        }
+                        <div class="container relative">
+                            @Display.Branding()
+                            @if (Model.Navigation != null) {
+                                @Zone(Model.Navigation)
+                            }
+                        </div>
+                    </div>
+                </div>
+            </header>
+            @if (Model.Featured != null) {
+                @Zone(Model.Featured)
+            }
+            @if (Model.BeforeMain != null) {
+                <div id="titlebar" class="cover">
+                    <div class="container relative">
+                        @Zone(Model.BeforeMain)
+                    </div>
+                </div>
+            }
+            <div id="page-content" class="@(HasText(asideClass) ? asideClass == "aside-1" ? "sidebar-layout ui-row sidebar-left" : asideClass == "aside-2" ? "sidebar-layout ui-row sidebar-right" : "no-sidebar-layout" : "no-sidebar-layout")">
+                <div class="container">
+                    <div id="the-content">
+                        @if (Model.Messages != null) {
+                            @Zone(Model.Messages)
+                        }
+                        @if (Model.BeforeContent != null) {
+                            @Zone(Model.BeforeContent)
+                        }
+                        @if (Model.Content != null) {
+                            @Zone(Model.Content)
+                        }
+                        @if (Model.AfterContent != null) {
+                            @Zone(Model.AfterContent)
+                        }
+                        @if (Model.TripelFirst != null || Model.TripelSecond != null || Model.TripelThird != null) {
+                            <div class="ui-row row">
+                                @if (Model.TripelFirst != null) {
+                                    <div class="ui-column @tripelClass">
+                                        @Zone(Model.TripelFirst)
+                                    </div>
+                                }
+                                @if (Model.TripelSecond != null) {
+                                    <div class="ui-column @tripelClass">
+                                        @Zone(Model.TripelSecond)
+                                    </div>
+                                }
+                                @if (Model.TripelThird != null) {
+                                    <div class="ui-column @tripelClass">
+                                        @Zone(Model.TripelThird)
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                    @if (Model.AsideFirst != null) {
+                        <aside id="sidebars" class="widget-area">
+                            @Zone(Model.AsideFirst)
+                        </aside>
+                    }
+                    @if (Model.AsideSecond != null) {
+                        <aside id="sidebars" class="widget-area">
+                            @Zone(Model.AsideSecond)
+                        </aside>
+                    }
+                </div>
+            </div>
+            @if (Model.AfterMain != null) {
+                @Zone(Model.AfterMain)
+            }
+            @if (Model.Footer != null || Model.FooterQuadFirst != null || Model.FooterQuadSecond != null || Model.FooterQuadThird != null || Model.FooterQuadFourth != null) {
+                <footer class="ui-dark">
+                    @if (Model.FooterQuadFirst != null || Model.FooterQuadSecond != null || Model.FooterQuadThird != null || Model.FooterQuadFourth != null) {
+                        <div id="footer-widgets">
+                            <div class="container">
+                                <div class="ui-row row">
+                                    @if (Model.FooterQuadFirst != null) {
+                                        <aside class="widget-area @footerQuadClass">
+                                            @Zone(Model.FooterQuadFirst)
+                                        </aside>
+                                    }
+                                    @if (Model.FooterQuadSecond != null) {
+                                        <aside class="widget-area @footerQuadClass">
+                                            @Zone(Model.FooterQuadSecond)
+                                        </aside>
+                                    }
+                                    @if (Model.FooterQuadThird != null) {
+                                        <aside class="widget-area @footerQuadClass">
+                                            @Zone(Model.FooterQuadThird)
+                                        </aside>
+                                    }
+                                    @if (Model.FooterQuadFourth != null) {
+                                        <aside class="widget-area @footerQuadClass">
+                                            @Zone(Model.FooterQuadFourth)
+                                        </aside>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (Model.Footer != null) {
+                        <div id="footer-bottom">
+                            <div class="container">
+                                @Zone(Model.Footer)
+                            </div>
+                        </div>
+                    }
+                </footer>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+﻿@model dynamic
+
+<div class="ui--message-box-wrap ui-row ui--animation clearfix">
+    <div class="ui--message-box clearfix ui--message-box-info @((Model.Type).ToString() == "Information" ? "ui--gradient-primary" : string.Empty) ui--gradient">
+        <div class="ui--message-box-icon-wrap"><i class="ui--icon icomoon-info icon-inline-block" style="font-size: 32px; width: 36px; height: 36px;"></i></div>
+        <div class="ui--message-box-inline">
+            <p>@T("Your user account has been created but has to be approved before it can be used.")</p>
+        </div>
+    </div>
+    <div class="ui--shadow ui--shadow-type-1 clearfix">
+        <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/shadow-1.png"))" alt="">
+    </div>
+</div>

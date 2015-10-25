@@ -1,0 +1,15 @@
+﻿@{
+    // number of page number links to show, 0 means no link, 1 means only the current page, or more accepted.
+    Model.Quantity = 5;
+
+    Model.Classes.Add("ui--pagination unstyled clearfix");
+    Model.Metadata.Alternates.Clear();
+    Model.Metadata.Type = "Pager_Links";
+}
+
+<div class="clearfix"></div>
+@if (Model.Items.Count > 0) {
+    <div class="ui--pagination-wrapper clearfix">
+        @Display(Model)
+    </div>
+}

@@ -1,0 +1,107 @@
+﻿@using Orchard.ContentManagement
+
+@{
+    var userCanRegister = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().UsersCanRegister;
+    var enableLostPassword = WorkContext.CurrentSite.As<Orchard.Users.Models.RegistrationSettingsPart>().EnableLostPassword;
+
+    WorkContext.Layout.BeforeMain.Add(New.Parts_Title(Title: T("Sign In")), "0");
+
+    Style.Require("Custom-Login");
+}
+
+@if (Model.Title == "Access Denied") {
+    <div class="ui--message-box-wrap ui-row ui--animation clearfix">
+        <div class="ui--message-box clearfix ui--message-box-error ui--gradient">
+            <div class="ui--message-box-icon-wrap"><i class="ui--icon icomoon-cancel-circle icon-inline-block" style="font-size: 32px; width: 36px; height: 36px;"></i></div>
+            <div class="ui--message-box-inline">
+                <p>@T("You do not have permission to complete your request.")</p>
+            </div>
+        </div>
+        <div class="ui--shadow ui--shadow-type-1 clearfix">
+            <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/shadow-1.png"))" alt="">
+        </div>
+    </div>
+}
+
+@if (Html.ValidationSummary() != null) {
+    <div class="ui--message-box-wrap ui-row ui--animation clearfix">
+        <div class="ui--message-box clearfix ui--message-box-error ui--gradient">
+            <div class="ui--message-box-icon-wrap"><i class="ui--icon icomoon-cancel-circle icon-inline-block" style="font-size: 32px; width: 36px; height: 36px;"></i></div>
+            <div class="ui--message-box-inline">
+                @Html.ValidationSummary()
+            </div>
+        </div>
+        <div class="ui--shadow ui--shadow-type-1 clearfix">
+            <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/shadow-1.png"))" alt="">
+        </div>
+    </div>
+}
+
+<div class="ui--section-content container clearfix" style="padding-top: 100px;  padding-bottom: 100px;">
+    <div class="ui-row row">
+        <div class="ui-column span3"></div>
+        <div class="ui-column span6">
+            <div class="ui--tagline-box-wrapper ui--animation clearfix" style="margin-bottom: 0px;">
+                <div id="tagline-2" class="ui--tagline-box ui-row clearfix ui--tagline-box-custom-color radius-3px" data-responsive="{&quot;css&quot;:{&quot;min-height&quot;:{&quot;phone&quot;:&quot;auto&quot;,&quot;tablet&quot;:&quot;auto&quot;,&quot;widescreen&quot;:&quot;&quot;}}}">
+                    <div class="ui--tagline-background-container ui--tagline-background-overlay radius-3px"></div>
+                    <div class="ui--tagline-background-container ui--tagline-background-image radius-3px"></div>
+                    <div class="ui--tagline-content" style="padding-top: 0px;  padding-bottom: 12px;">
+                        <h5 id="custom-title-h5-4" class="ui--animation " style="margin-top: 0px; margin-bottom: 0px; "><strong>@T("Sign In")</strong></h5>
+                    </div>
+                </div>
+            </div>
+            <div class="ui--tagline-box-wrapper ui--animation clearfix" style="margin-bottom: 0px;">
+                <div id="tagline-1" class="ui--tagline-box ui-row clearfix ui--tagline-box-custom-color radius-3px" data-responsive="{&quot;css&quot;:{&quot;min-height&quot;:{&quot;phone&quot;:&quot;auto&quot;,&quot;tablet&quot;:&quot;auto&quot;,&quot;widescreen&quot;:&quot;&quot;}}}">
+                    <div class="ui--tagline-background-container ui--tagline-background-overlay radius-3px"></div>
+                    <div class="ui--tagline-background-container ui--tagline-background-image radius-3px"></div>
+                    <div class="ui--tagline-content">
+                        <div class="ui--custom-login ui--pass">
+                            <div id="login-form-container" class="ui--custom-login login-form-container">
+                                @using (Html.BeginFormAntiForgeryPost(Url.Action("LogOn", new { ReturnUrl = Request.QueryString["ReturnUrl"] }), FormMethod.Post, new { @class = "login-form form-horizontal ui-row" })) {
+                                    <div class="form-elements">
+                                        <div class="ui-row row">
+                                            <p class="control-group">
+                                                <label class="control-label ui--animation" for="userNameOrEmail">@T("Username or Email")</label>
+                                                <span class="controls ui--animation">
+                                                    @Html.TextBox("userNameOrEmail", "", new { @class = "input-text" })
+                                                </span>
+                                            </p>
+                                            <p class="control-group">
+                                                @if (enableLostPassword) {
+                                                    <small class="pull-right ui--animation"> @Html.ActionLink(T("Lost Password?").Text, "RequestLostPassword", null, new { @class = "lost_password" }) </small>
+                                                }
+                                                <label class="control-label ui--animation" for="password">@T("Password")</label>
+                                                <span class="controls ui--animation">
+                                                    @Html.Password("password", "", new { @class = "input-text" })
+                                                </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="custom-login-form-actions clearfix">
+                                        <p class="control-group pull-right">
+                                            <label class="control-label checkbox inline ui--animation" for="rememberMe">
+                                                @Html.CheckBox("rememberMe") @T("Remember me")
+                                            </label>
+                                        </p>
+                                        <p class="control-group pull-left">
+                                            <button type="submit" class="ui--animation btn btn-primary" value="Sign In">@T("Sign In")</button>
+                                        </p>
+                                        <div class="clearfix"></div>
+                                        @if (userCanRegister) {
+                                            <p class="control-group ">
+                                                <span class="ui--animation">
+                                                    @Html.ActionLink(T("Register New User").Text, "Register", new { ReturnUrl = Request.QueryString["ReturnUrl"] }, new { @class = "register_btn btn  btn-secondary" })
+                                                </span>
+                                            </p>
+                                        }
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-column span3"></div>
+    </div>
+</div>

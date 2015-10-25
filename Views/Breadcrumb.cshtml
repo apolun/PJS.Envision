@@ -1,0 +1,28 @@
+﻿@{
+    var items = (IList<dynamic>)Enumerable.Cast<dynamic>(Model.Items);
+    var itemCount = 1;
+}
+
+@if (items.Any()) {
+    <div id="titlebar-breadcrumb">
+        <div id="breadcrumb" class="ui--box-alias centerVertical">
+            <div class="ui-bc ui-breadcrumbs breadcrumbs">
+                @foreach (var item in items) {
+                    if (itemCount == 1 && itemCount < items.Count) {
+                        <span class="ui-bc-item ui-bc-first"><a href="@item.Href" rel="home"><span>@item.Text</span></a></span><span class="ui-bc-seperator"> <i class="ui--caret fa fa-angle-right px18"></i> </span>
+                    }
+                    else if (itemCount == 1 && itemCount == items.Count) {
+                        <span class="ui-bc-item ui-bc-first ui-bc-last"><a href="@item.Href" rel="home"><span>@item.Text</span></a></span>
+                    }
+                    else if (itemCount == items.Count) {
+                        <span class="ui-bc-item ui-bc-last"><span>@item.Text</span></span>
+                    }
+                    else {
+                        <span class="ui-bc-item"><a href="@item.Href" rel="home"><span>@item.Text</span></a></span><span class="ui-bc-seperator"> <i class="ui--caret fa fa-angle-right px18"></i> </span>
+                    }
+                    itemCount++;
+                }
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,221 @@
+﻿@model PJS.Envision.Models.EnvisionThemeSettingsPart
+
+@{
+    List<SelectListItem> layoutStyles = new List<SelectListItem>();
+    layoutStyles.Add(new SelectListItem { Text = "Boxed", Value = "boxed" });
+    layoutStyles.Add(new SelectListItem { Text = "Wide", Value = "wide" });
+
+    List<SelectListItem> headerStyles = new List<SelectListItem>();
+    headerStyles.Add(new SelectListItem { Text = "Header Style 1", Value = "header-style-1" });
+    headerStyles.Add(new SelectListItem { Text = "Header Style 2", Value = "header-style-2" });
+    
+    List<SelectListItem> logoPositions = new List<SelectListItem>();
+    logoPositions.Add(new SelectListItem { Text = "Left", Value = "left" });
+    logoPositions.Add(new SelectListItem { Text = "Center", Value = "center" });
+    logoPositions.Add(new SelectListItem { Text = "Right", Value = "right" });
+
+    List<SelectListItem> navigationPositions = new List<SelectListItem>();
+    navigationPositions.Add(new SelectListItem { Text = "Left", Value = "left" });
+    navigationPositions.Add(new SelectListItem { Text = "Center", Value = "center" });
+    navigationPositions.Add(new SelectListItem { Text = "Right", Value = "right" });
+
+    List<SelectListItem> stickyLogoPositions = new List<SelectListItem>();
+    stickyLogoPositions.Add(new SelectListItem { Text = "Left", Value = "left" });
+    stickyLogoPositions.Add(new SelectListItem { Text = "Center", Value = "center" });
+    stickyLogoPositions.Add(new SelectListItem { Text = "Right", Value = "right" });
+
+    List<SelectListItem> stickyNavigationPositions = new List<SelectListItem>();
+    stickyNavigationPositions.Add(new SelectListItem { Text = "Left", Value = "left" });
+    stickyNavigationPositions.Add(new SelectListItem { Text = "Center", Value = "center" });
+    stickyNavigationPositions.Add(new SelectListItem { Text = "Right", Value = "right" });
+
+    List<SelectListItem> blogStyles = new List<SelectListItem>();
+    blogStyles.Add(new SelectListItem { Text = "Large", Value = "large" });
+    blogStyles.Add(new SelectListItem { Text = "Medium", Value = "medium" });
+    blogStyles.Add(new SelectListItem { Text = "Grid", Value = "grid" });
+    blogStyles.Add(new SelectListItem { Text = "Grid Masonry", Value = "grid-masonry" });
+    blogStyles.Add(new SelectListItem { Text = "Mini", Value = "mini" });
+}
+
+@using (Script.Foot()) {
+    <script type="text/javascript">
+    $(function () {
+        $('.colorContainer.@Model.Skin').addClass('active');
+
+            $('.colorContainer').click(function () {
+                var color = $(this).data("color");
+                $('#EnvisionThemeSettings_Skin').val(color);
+                $('.colorContainer').removeClass('active');
+                $('.colorContainer.' + color).addClass('active');
+            });
+
+            if ('@Model.LayoutStyle' == 'boxed') {
+                $('#layoutContainer').toggle(true);
+            }
+
+            $('#EnvisionThemeSettings_LayoutStyle').change(function () {
+                if ($(this).val() == 'boxed') {
+                    $('#layoutContainer').toggle(true);
+                }
+                else {
+                    $('#layoutContainer').toggle(false);
+                }
+            });
+
+            if (@Model.ShowTopBar.ToString().ToLowerInvariant()) {
+                $('#topbarContainer').toggle(true);
+            }
+
+            $('#EnvisionThemeSettings_ShowTopBar').change(function () {
+                if ($(this).is(':checked')) {
+                    $('#topbarContainer').toggle(true);
+                }
+                else {
+                    $('#topbarContainer').toggle(false);
+                }
+            });
+
+            if (@Model.StickyHeader.ToString().ToLowerInvariant()) {
+                $('#stickyHeaderContainer').toggle(true);
+            }
+
+            $('#EnvisionThemeSettings_StickyHeader').change(function () {
+                if ($(this).is(':checked')) {
+                    $('#stickyHeaderContainer').toggle(true);
+                }
+                else {
+                    $('#stickyHeaderContainer').toggle(false);
+                }
+            });
+        });
+    </script>
+}
+
+<style type="text/css">
+    fieldset { padding-bottom: 20px; }
+    .colorContainer { float: left; margin-right: 10px !important; display: block; width: 64px; height: 64px; border: 1px solid #ebebeb; overflow: hidden; cursor: pointer; }
+        .colorContainer.active, .colorContainer:hover { border: 1px solid #000 !important; }
+        .colorContainer span { display: block; float: left; width: 50%; height: 64px; outline: 1px solid rgba(255,255,255,.2); }
+</style>
+
+<fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Skin</legend>
+    <span class="hint">@T("Select a skin color to use. The first color represents the highlight color. The second color represents the footer background color.")</span>
+    <div style="width: 100%">
+        <div class="colorContainer default" data-color="default">
+            <span style="background-color: #19adea;"></span>
+            <span style="background-color: #3b3b3b;"></span>
+        </div>
+        <div class="colorContainer default-light-footer" data-color="default-light-footer">
+            <span style="background-color: #19adea;"></span>
+            <span style="background-color: #ffffff;"></span>
+        </div>
+        <div class="colorContainer dark" data-color="dark">
+            <span style="background-color: #4E5859;"></span>
+            <span style="background-color: #3b3b3b;"></span>
+        </div>
+        <div class="colorContainer green" data-color="green">
+            <span style="background-color: #27A94B;"></span>
+            <span style="background-color: #3b3b3b;"></span>
+        </div>
+        <div class="colorContainer brown" data-color="brown">
+            <span style="background-color: #A38279;"></span>
+            <span style="background-color: #3b3b3b;"></span>
+        </div>
+        <div class="colorContainer cyan" data-color="cyan">
+            <span style="background-color: #4BC0CF;"></span>
+            <span style="background-color: #3b3b3b;"></span>
+        </div>
+        <div class="colorContainer yellow" data-color="yellow">
+            <span style="background-color: #FEDE4B;"></span>
+            <span style="background-color: #3b3b3b;"></span>
+        </div>
+        <div class="colorContainer orange" data-color="orange">
+            <span style="background-color: #FF5C1C;"></span>
+            <span style="background-color: #3b3b3b;"></span>
+        </div>
+        <div class="colorContainer orange-light-footer" data-color="orange-light-footer">
+            <span style="background-color: #FF5C1C;"></span>
+            <span style="background-color: #ffffff;"></span>
+        </div>
+        <div class="colorContainer dark-blue" data-color="dark-blue">
+            <span style="background-color: #2D5C88;"></span>
+            <span style="background-color: #3b3b3b;"></span>
+        </div>
+    </div>
+    @Html.HiddenFor(x => x.Skin)
+</fieldset>
+<fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Select a Layout Style</legend>
+    @Html.DropDownListFor(m => m.LayoutStyle, layoutStyles.AsEnumerable())
+</fieldset>
+<div id="layoutContainer" style="display: none;">
+    <fieldset style="border-bottom: 1px solid #000000;">
+        <legend>Background Image (optional)</legend>
+        <span class="hint">@T("Provide a fully qualified URL to an image to use as a background for boxed layout. See /Themes/PJS.Envision/Content/patterns/... for samples. Images should be .jpg format, patterns should be .png format")</span>
+        @Html.TextBoxFor(m => m.BackgroundImageUrl, new { style = "width: 100%;", placeholder = "/Themes/PJS.Envision/Content/patterns/image-4.jpg" })
+    </fieldset>
+</div>
+<fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Show Top Bar</legend>
+    <span class="hint">@T("Select this option to show the Top Bar above the header.")</span>
+    @Html.CheckBoxFor(m => m.ShowTopBar)
+</fieldset>
+<div id="topbarContainer" style="display: none;">
+    <fieldset style="border-bottom: 1px solid #000000;">
+        <legend>Sticky Top Bar</legend>
+        <span class="hint">@T("Select this option to lock the top bar at the top of the page when scrolling.")</span>
+        @Html.CheckBoxFor(m => m.StickyTopBar)
+    </fieldset>
+</div>
+<fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Select a Header Style</legend>
+    @Html.DropDownListFor(m => m.HeaderStyle, headerStyles.AsEnumerable())
+</fieldset>
+<fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Logo Position</legend>
+    <span class="hint">@T("Select which side of the header to display the logo.")</span>
+    @Html.DropDownListFor(m => m.LogoPosition, logoPositions.AsEnumerable())
+</fieldset>
+<fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Navigation Position</legend>
+    <span class="hint">@T("Select which side of the header to display the navigation.")</span>
+    @Html.DropDownListFor(m => m.NavigationPosition, navigationPositions.AsEnumerable())
+</fieldset>
+<fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Sticky Header</legend>
+    <span class="hint">@T("Select this option to lock the header at the top of the page when scrolling.")</span>
+    @Html.CheckBoxFor(m => m.StickyHeader)
+</fieldset>
+<div id="stickyHeaderContainer" style="display: none;">
+    <fieldset style="border-bottom: 1px solid #000000;">
+        <legend>Sticky Header Logo Position</legend>
+        <span class="hint">@T("Select which side of the header to display the logo on the sticky header.")</span>
+        @Html.DropDownListFor(m => m.StickyLogoPosition, stickyLogoPositions.AsEnumerable())
+    </fieldset>
+    <fieldset style="border-bottom: 1px solid #000000;">
+        <legend>Sticky Navigation Position</legend>
+        <span class="hint">@T("Select which side of the header to display the navigation on the sticky header.")</span>
+        @Html.DropDownListFor(m => m.StickyNavigationPosition, stickyNavigationPositions.AsEnumerable())
+    </fieldset>
+    <fieldset style="border-bottom: 1px solid #000000;">
+        <legend>Show Logo on Sticky Header</legend>
+        <span class="hint">@T("Select this option to show the logo on the sticky header.")</span>
+        @Html.CheckBoxFor(m => m.ShowLogoStickyHeader)
+    </fieldset>
+</div>
+<fieldset style="border-bottom: 1px solid #000000;">
+    <legend>Title Bar Background Image (optional)</legend>
+    <span class="hint">@T("Provide a fully qualified URL to an image to use as the Title Bar background. See /Themes/PJS.Envision/Content/title-bar/... for samples.")</span>
+    @Html.TextBoxFor(m => m.TitleBarBackgroundImageUrl, new { style = "width: 100%;", placeholder = "/Themes/PJS.Envision/Content/title-bar/3.jpg" })
+</fieldset>
+<fieldset style ="border-bottom: 1px solid #000000;">
+    <legend>Sticky Footer</legend>
+    <span class="hint">@T("Select this option to lock the footer at the bottom of the page.")</span>
+    @Html.CheckBoxFor(m => m.StickyFooter)
+</fieldset>
+<fieldset>
+    <legend>Blog Style</legend>
+    <span class="hint">@T("Select which blog style to use for the blog summary.")</span>
+    @Html.DropDownListFor(m => m.BlogStyle, blogStyles.AsEnumerable())
+</fieldset>

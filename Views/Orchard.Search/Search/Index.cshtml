@@ -1,0 +1,13 @@
+﻿@model Orchard.Search.ViewModels.SearchViewModel
+
+@{
+    IEnumerable<object> searchResults = Model.ContentItems;
+    Model.ContentItems.Classes.Add("unstyled");
+
+    WorkContext.Layout.BeforeMain.Add(New.Parts_Title(Title: T("Search Results").Text + (HasText(Model.Query) ? T(" for \"{0}\"", Model.Query) : T(""))), "0");
+}
+
+@if (searchResults != null && searchResults.Any()) {
+    @Display(searchResults)
+    @Display(Model.Pager)
+}

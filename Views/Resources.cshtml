@@ -1,0 +1,48 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.UI.Resources;
+@using PJS.Envision.Models;
+
+@{
+    var settings = WorkContext.CurrentSite.As<EnvisionThemeSettingsPart>();
+
+    SetMeta(new MetaEntry { Name = "viewport", Content = "width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" });
+    SetMeta(httpEquiv: "X-UA-Compatible", content: "IE=edge,chrome=1");
+
+    Style.Include("https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,300,400,600");
+    Style.Include("https://fonts.googleapis.com/css?family=Raleway:200,600");
+
+    Style.Require("Fonts");
+    Style.Require("Custom-Login");
+    Style.Require("Bootstrap");
+    Style.Require("Envision-Style");
+    Style.Require("Envision-Extensions");
+    Style.Require("Bootstrap-Responsive");
+    Style.Require("Bootstrap-Responsive-1170");
+    Style.Require("Responsive");
+    Style.Require("Retina");
+    Style.Require("Font-Awesome");
+    Style.Require("Icomoon");
+
+    Style.Include("skins/" + settings.Skin + ".css");
+
+    Style.Require("Envision-Custom");
+
+    Script.Require("jQuery");
+    Script.Require("jQuery-Migrate");
+    Script.Require("ToTop");
+    Script.Require("Envision-Common");
+    Script.Require("Modernizr");
+    Script.Require("NoConflict");
+    Script.Require("WebFont");
+    Script.Require("prettyPhoto");
+    Script.Require("Envision-Extensions");
+    Script.Require("Retina");
+    Script.Require("QueryLoader2");
+    Script.Require("Waypoints");
+    Script.Require("Waypoints-Sticky");
+    Script.Require("SmoothScroll");
+    Script.Require("TextRotator");
+    Script.Require("Viewport-Mini");
+    Script.Require("Flexslider");
+    Script.Require("Envision-Custom");
+}

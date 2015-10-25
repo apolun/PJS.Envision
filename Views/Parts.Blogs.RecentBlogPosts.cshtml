@@ -1,0 +1,26 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.Blogs.Models;
+@using Orchard.MediaLibrary.Fields
+@using System.Linq;
+
+@{
+    IEnumerable<object> blogPosts = Model.ContentItems.ContentItems;
+}
+
+@if (blogPosts == null || blogPosts.Count() < 1) {
+    <p>@T("No posts.")</p>
+}
+else {
+    <div class="widget_recent_entries">
+        <ul class="recent-posts">
+            @foreach (dynamic post in blogPosts) {
+                string title = post.Title;
+                ContentItem contentItem = post.ContentItem;
+
+                <li>
+                    @Html.ItemDisplayLink(title, contentItem)
+                </li>
+            }
+        </ul>
+    </div>
+}
