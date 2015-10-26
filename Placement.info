@@ -41,6 +41,26 @@
     <Place Parts_Common_Metadata="-"
            Parts_Common_Metadata_Summary="-"/>
   </Match>
+
+  <Match ContentType="ZenGallery">
+    <Place Parts_Common_Metadata="-"/>
+  </Match>
+  
+  <Match ContentType="Testimonial">
+    <Match DisplayType="Summary">
+      <Place Parts_Common_Body_Summary="Summary:0"
+             Parts_Common_Metadata_Summary="-" />
+    </Match>
+    <Match DisplayType="Detail">
+      <Place Parts_Title="/BeforeMain:0"
+             Parts_Common_Body="Summary:0"
+             Parts_Common_Metadata="-"/>
+    </Match>
+  </Match>
+
+  <Match ContentType="TrainingSystemsTerm">
+    <Place Parts_Common_Metadata="-"/>
+  </Match>
   
   <Match Path="~/">
     <Place Parts_Title="-"/>
