@@ -1,0 +1,40 @@
+﻿@using Orchard.ContentManagement;
+
+@{
+    Script.Require("Sharrre");
+    var testimonial = Model.ContentItem;
+}
+
+<div class="ui--blog ui--blog-wrapper ui--pass">
+    <div class="ui--blog-item clearfix layout--single">
+        @Display(Model.Media)
+
+        <div class="ui--blog-content-wrapper">
+            <div class="ui--blog-header">
+                <h3 class="ui--blog-title clearfix"><span class="ui--blog-link">@testimonial.TitlePart.Title</span></h3>
+            </div>
+
+            <div class="ui--blog-content">
+                @Display(Model.Summary)
+            </div>
+        </div>
+    </div>
+
+    <div class="ui--title ui--animation ui--title-bordered text-left">
+        <div class="ui--title-holder">
+            <h4 class="ui--title-text"> <strong>@T("Share")</strong> @T("the Post") </h4>
+            <div class="ui--title-borders ui--title-border-left"></div>
+            <div class="ui--title-borders ui--title-border-right"></div>
+        </div>
+    </div>
+
+    <div class="ui--sharrre text-center clearfix ui--sharrre-block">
+        <div class="ui--sharrre-twitter" data-url="@Request.Url.AbsoluteUri" data-text="@testimonial.TitlePart.Title" data-title="&lt;i class=&#039;fa fa-twitter&#039;&gt;&lt;/i&gt; &lt;span class=&#039;ui--sharrre-link-title&#039;&gt;Tweet&lt;/span&gt;"></div>
+        <div class="ui--sharrre-facebook" data-url="@Request.Url.AbsoluteUri" data-text="@testimonial.TitlePart.Title" data-title="&lt;i class=&#039;fa fa-facebook&#039;&gt;&lt;/i&gt; &lt;span class=&#039;ui--sharrre-link-title&#039;&gt;Like&lt;/span&gt;"></div>
+        <div class="ui--sharrre-googleplus" data-url="@Request.Url.AbsoluteUri" data-text="@testimonial.TitlePart.Title" data-title="&lt;i class=&#039;fa fa-google-plus-square&#039;&gt;&lt;/i&gt; &lt;span class=&#039;ui--sharrre-link-title&#039;&gt;+1&lt;/span&gt;"></div>
+        <div class="ui--sharrre-linkedin" data-url="@Request.Url.AbsoluteUri" data-text="@testimonial.TitlePart.Title" data-title="&lt;i class=&#039;fa fa-linkedin&#039;&gt;&lt;/i&gt; &lt;span class=&#039;ui--sharrre-link-title&#039;&gt;Linkedin&lt;/span&gt;"></div>
+        <div class="ui--sharrre-pinterest" data-url="@Request.Url.AbsoluteUri" data-text="@testimonial.TitlePart.Title" data-title="&lt;i class=&#039;fa fa-pinterest&#039;&gt;&lt;/i&gt; &lt;span class=&#039;ui--sharrre-link-title&#039;&gt;Pinterest&lt;/span&gt;"></div>
+    </div>
+
+    @Display(Model.Footer)
+</div>

@@ -1,0 +1,49 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.MediaLibrary.Fields
+@using System.Linq
+
+@{
+    IEnumerable<dynamic> items = Model.ContentItems;
+}
+
+
+@foreach (dynamic item in items) {
+    var product = item.ContentItem;
+    var productImages = product.Product.ProductImages as MediaLibraryPickerField;
+
+    <div class="ui--blog-item clearfix layout--medium">
+        @if (productImages != null) {
+            if (productImages.MediaParts.Count() > 1) {
+                <div class="ui--blog-media">
+                    <div class="ui--blog-gallery" data-options="{'effect':'fade','auto_rotate':false,'rotate_time':false}">
+                        <div class="slides">
+                            @foreach (var mediapart in productImages.MediaParts) {
+                                <div class="ui--blog-gallery-item">
+                                    <img class="ui--blog-gallery-image" src="@Display.ResizeMediaUrl(Path: mediapart.MediaUrl, Width: 240)" alt="@mediapart.AlternateText" />
+                                </div>
+                            }
+                        </div>
+                        <div class="ui--blog-gallery-navigation"></div>
+                    </div>
+                </div>
+            }
+            else if (productImages.MediaParts.Count() == 1) {
+                <div class="ui--blog-media">
+                    @foreach (var mediapart in productImages.MediaParts) {
+                        <a class="ui--blog-link" href="@Url.ItemDisplayUrl((IContent)product)">
+                            <img class="ui--blog-image" src="@Display.ResizeMediaUrl(Path: mediapart.MediaUrl, Width: 240)" alt="@mediapart.AlternateText">
+                        </a>
+                    }
+                </div>
+            }
+        }
+        <div class="ui--blog-content-wrapper">
+            <div class="ui--blog-header">
+                <h3 class="ui--blog-title clearfix"><a class="ui--blog-link" href="@Url.ItemDisplayUrl((IContent)product)">@product.TitlePart.Title</a></h3>
+            </div>
+            <div class="ui--blog-content">
+                @Html.Raw(product.BodyPart.Text)
+            </div>
+        </div>
+    </div>
+}

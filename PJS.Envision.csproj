@@ -576,6 +576,31 @@
   <ItemGroup>
     <Content Include="Views\PJS.ProductLocator\Home\Index.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ComparisonWidget.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Content-Product.cshtml" />
+    <Content Include="Views\Content-Testimonial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ListOfTestimonials.cshtml" />
+    <Content Include="Views\ListOfTestimonialsWidget.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.Stars.AverageOnly.cshtml" />
+    <Content Include="Views\Parts.Stars.cshtml" />
+    <Content Include="Views\Parts.Stars.Details.cshtml" />
+    <Content Include="Views\Parts.Stars.Details.ReadOnly.cshtml" />
+    <Content Include="Views\Parts.Stars.NoAverage.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.TermPart-TrainingSystemsTerm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts.TwitterWidget.cshtml" />
+    <Content Include="Views\Parts.ZenGallery.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

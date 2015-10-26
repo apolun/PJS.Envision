@@ -1,0 +1,51 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.MediaLibrary.Fields
+
+@{
+    var buildShapes = Model.BuildShapes;
+    int eventCounter = 0;
+}
+
+<div class="ui-row row-fluid">
+    @foreach (dynamic shape in buildShapes()) {
+        dynamic testimonial = shape.ContentItem.Testimonial;
+        string bodyHtml = testimonial.BodyPart.Text.ToString();
+        var body = new HtmlString(Html.Excerpt(bodyHtml, 500).ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+        var imageField = testimonial.Testimonial.TestimonialMedia as MediaLibraryPickerField;
+
+        if ((eventCounter % 3) == 0) {
+            @Html.Raw("</div><div class=\"ui-row row-fluid\">")
+        }
+
+        <div class="ui-column span4">
+            <div class="ui--carousel-item ui--testimonial-wrap clearfix fx--fadein-ttb ui--animation-fire" delay="1600">
+                <div class="ui--testimonial clearfix">
+                    <div class="ui--testimonial-content ui--box ui--gradient ui--gradient-grey auto-format clearfix">
+                        @body
+                        <div class="text-center">
+                            <a class="btn btn-normal btn-block btn-icon-left btn-secondary" href="@Url.ItemDisplayUrl((IContent)testimonial)">Read More</a>
+                        </div>
+                        <div class="ui--testimonial-arrow"><i class="fa fa-caret-down"></i></div>
+                    </div>
+                    <div class="ui--testimonial-brand clearfix fx--fadein-btt ui--animation-fire" data-fx="fx--fadein-btt" delay="0">
+                        <div class="ui--testimonial-image">
+                            <div class="ui--testimonial-image-position">
+                                @foreach (var mediapart in imageField.MediaParts.Take(1)) {
+                                    <a href="@Url.ItemDisplayUrl((IContent)testimonial)">
+                                        <img class="ui--blog-image" src="@Display.ResizeMediaUrl(Path: mediapart.MediaUrl, Width: 200)" alt="@mediapart.AlternateText">
+                                    </a>
+                                }
+                            </div>
+                        </div>
+                        <div class="ui--testimonial-user">
+                            <strong class="name">@testimonial.TitlePart.Title</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+        eventCounter++;
+    }
+</div>

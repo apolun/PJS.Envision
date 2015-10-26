@@ -1,0 +1,58 @@
+﻿@using Orchard.ContentManagement
+@using Orchard.MediaLibrary.Fields
+
+@{
+    var buildShapes = Model.BuildShapes;
+    int eventCounter = 1;
+}
+
+<div class="ui--title ui--animation ui--title-bordered text-left with-navigation">
+    <div class="ui--title-holder">
+        <h4 class="ui--title-text"><strong>Testimonials</strong></h4>
+        <div class="ui--title-borders ui--title-border-left"></div>
+        <div class="ui--title-borders ui--title-border-right"></div>
+    </div>
+    <div class="ui--title-navigation"><span class="arr arr-small arr-plain arr-left ui--carosuel-prev"><span></span><i class="fontawesome-angle-left px18"></i></span> <span class="arr arr-small arr-plain ui--carosuel-next"><span></span><i class="fontawesome-angle-right px18"></i></span></div>
+</div>
+<div class="ui--animation-in make--fx--fadein-ttb ui--pass clearfix" data-fx="fx--fadein-ttb" data-delay="250" data-start-delay="0">
+    <div class="ui--carousel clearfix" data-options="{&quot;effect&quot;:&quot;slide&quot;,&quot;auto_rotate&quot;:&quot;1&quot;,&quot;animation_loop&quot;:&quot;FALSE&quot;,&quot;arrows&quot;:true,&quot;rotate_time&quot;:0,&quot;animate&quot;:true}">
+        <div class="ui--carousel-viewport">
+            <div class="slides">
+                @foreach (dynamic shape in buildShapes()) {
+                    dynamic testimonial = shape.ContentItem.Testimonial;
+                    string bodyHtml = testimonial.BodyPart.Text.ToString();
+                    var body = new HtmlString(Html.Excerpt(bodyHtml, 500).ToString().Replace(Environment.NewLine, "</p>" + Environment.NewLine + "<p>"));
+                    var imageField = testimonial.Testimonial.TestimonialMedia as MediaLibraryPickerField;
+
+                    <div class="ui--carousel-content clearfix ui--carousel-active-slide">
+                        <div class="ui-row row-fluid">
+                            <div class="ui-column span12">
+                                <div class="ui--carousel-item ui--twitter-style-default ui--twitter-timeline-wrap clearfix fx--fadein-ttb ui--animation-fire" delay="0">
+                                    <div class="ui--twitter-timeline clearfix">
+                                        <div class="ui--twitter-timeline-content ui--box ui--gradient ui--gradient-grey auto-format clearfix">
+                                            @if (imageField != null) {
+                                                <div class="ui--blog-media">
+                                                    @foreach (var mediapart in imageField.MediaParts.Take(1)) {
+                                                        <a class="ui--blog-link" href="@Url.ItemDisplayUrl((IContent)testimonial)">
+                                                            <img class="ui--blog-image" src="@Display.ResizeMediaUrl(Path: mediapart.MediaUrl, Width: 200)" alt="@mediapart.AlternateText">
+                                                        </a>
+                                                    }
+                                                </div>
+                                                <br />
+                                            }
+                                            @body
+                                            <div class="text-center">
+                                                <a class="btn btn-normal btn-block btn-icon-left btn-secondary" href="@Url.ItemDisplayUrl((IContent)testimonial)">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

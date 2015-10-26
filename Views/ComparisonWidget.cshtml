@@ -1,0 +1,334 @@
+﻿@{
+    var system1 = Request.QueryString["system1"];
+    var system2 = Request.QueryString["system2"];
+    var system3 = Request.QueryString["system3"];
+    int system1Index = 0;
+    int system2Index = 0;
+    int system3Index = 0;
+
+    string url = "http://flypfc.blob.core.windows.net/media/Default/Comparison/comparison.csv";
+
+    HttpWebRequest req = (HttpWebRequest)WebRequest.Create(url);
+    HttpWebResponse resp = (HttpWebResponse)req.GetResponse();
+
+    const int readSize = 256;
+    byte[] buffer = new byte[readSize];
+    Stream system1Stream = new MemoryStream();
+    Stream system2Stream = new MemoryStream();
+    Stream system3Stream = new MemoryStream();
+    Stream labelStream = new MemoryStream();
+
+    int count = resp.GetResponseStream().Read(buffer, 0, readSize);
+    while (count > 0) {
+        system1Stream.Write(buffer, 0, count);
+        system2Stream.Write(buffer, 0, count);
+        system3Stream.Write(buffer, 0, count);
+        labelStream.Write(buffer, 0, count);
+        count = resp.GetResponseStream().Read(buffer, 0, readSize);
+    }
+    system1Stream.Position = 0;
+    system2Stream.Position = 0;
+    system3Stream.Position = 0;
+    labelStream.Position = 0;
+    resp.GetResponseStream().Close();
+
+    int systemsToCompare = 0;
+    if (!String.IsNullOrWhiteSpace(system1)) {
+        systemsToCompare += 1;
+    }
+    if (!String.IsNullOrWhiteSpace(system2)) {
+        systemsToCompare += 1;
+    }
+    if (!String.IsNullOrWhiteSpace(system3)) {
+        systemsToCompare += 1;
+    }
+}
+
+@if (systemsToCompare < 2) {
+    <p>You must specify at least two systems to compare.</p>
+}
+else {
+    <div class="ui--animation-in make--fx--appear ui--pass clearfix" data-fx="fx--appear" data-delay="10" data-start-delay="0">
+        <div class="ui--pricing-table-wrap clearfix style2">
+            <ul id="price_table_1" class="ui--pricing-table unstyled clearfix columns-@systemsToCompare">
+                @if (!String.IsNullOrWhiteSpace(system1)) {
+                    <li class="ui--pricing-table-column featured fx--appear ui--animation" delay="0">
+                        <div class="ui--shadow-top inset ui--box">
+                            @using (StreamReader sr = new StreamReader(system1Stream)) {
+                                string currentLine;
+                                int row = 0;
+
+                                while ((currentLine = sr.ReadLine()) != null) {
+                                    var values = currentLine.Split(',');
+
+                                    if (row == 0) {
+                                        int column = 0;
+
+                                        foreach (var value in values) {
+                                            if (value.ToLower() == system1.ToLower()) {
+                                                system1Index = column;
+                                                <div class="ui--pricing-table-item-title-wrap ui--gradient ui--accent-gradient ui--accent-color">
+                                                    <h1 class="ui--pricing-table-item-title">
+                                                        <strong>@value.Replace("-", " ")</strong>
+                                                    </h1>
+                                                </div>
+                                            }
+                                            column++;
+                                        }
+
+                                        if (system1Index == 0) {
+                                            <div class="ui--pricing-table-item-title-wrap ui--gradient ui--accent-gradient ui--accent-color">
+                                                <h1 class="ui--pricing-table-item-title">
+                                                    <strong>System Not Found</strong>
+                                                </h1>
+                                            </div>
+                                            @Html.Raw("<div class=\"ui--pricing-table-features-rows ui--pricing-table-features text-center\">")
+
+                                            break;
+                                        }
+
+                                        row++;
+                                    }
+                                    else if (row == 1) {
+                                        <div class="ui--pricing-table-before-html clearfix">
+                                            <div class="caption">
+                                                <p>@values[system1Index]</p>
+                                            </div>
+                                        </div>
+                                        @Html.Raw("<div class=\"ui--pricing-table-features-rows ui--pricing-table-features text-center\">")
+                                        row++;
+                                    }
+                                    else {
+                                        if (values[0].StartsWith("#")) {
+                                            <div class="ui--pricing-table-feature ui--pricing-table-feature-row-@(row) fx--caption-left ui--animation" data-group="ui--pricing-table-feature-row-@(row)" data-fx="fx--caption-left">
+                                            </div>
+                                        }
+                                        else {
+                                            if (!values[0].StartsWith("#") && !String.IsNullOrEmpty(values[system1Index])) {
+                                                <div class="ui--pricing-table-feature ui--pricing-table-feature-row-@row @(row %2 == 0 ? "even" : "odd") fx--caption-left ui--animation" data-group="ui--pricing-table-feature-row-@row" data-fx="fx--caption-left">
+                                                    <div class="ui--pricing-table-feature-title-phone visible-phone ">
+                                                        <strong>@values[0]:</strong>
+                                                    </div>
+                                                    @if (values[system1Index] == "TRUE") {
+                                                        <i class="ui--icon fa fa-check icon-inline-block" style="color: #2D5C88 !important;">&nbsp;</i>
+                                                    }
+                                                    else if (values[system1Index] == "FALSE") {
+                                                        <i class="ui--icon fa fa-remove icon-inline-block" style="color: #ed888d !important;">&nbsp;</i>
+                                                    }
+                                                    else {
+                                                        @values[system1Index]
+                                                    }
+                                                </div>
+                                                    row++;
+                                            }
+                                        }
+                                    }
+                                }
+
+                            }
+                            <div class="ui--pricing-table-features-titles ui--pricing-table-features text-left">
+                                <!--labels here-->
+                                @using (StreamReader sr = new StreamReader(labelStream)) {
+                                    string currentLine;
+                                    int row = 0;
+
+                                    while ((currentLine = sr.ReadLine()) != null) {
+                                        var values = currentLine.Split(',');
+
+                                        if (row == 0 || row == 1) {
+                                            row++;
+                                        }
+                                        else {
+                                            if (values[0].StartsWith("#")) {
+                                                <div class="ui--gradient ui--accent-gradient ui--accent-color text-center ui--pricing-table-feature fx--caption-left ui--animation" data-fx="fx--caption-left" data-group="ui--pricing-table-feature-row-@(row)">@values[0].Replace("#", "")</div>
+                                            }
+                                            else {
+                                                if (!values[0].StartsWith("#") && !String.IsNullOrEmpty(values[system1Index])) {
+                                                    <div class="ui--pricing-table-feature ui--pricing-table-feature-row-@row @(row %2 == 0 ? "even" : "odd") fx--caption-left ui--animation" data-fx="fx--caption-left" data-group="ui--pricing-table-feature-row-@row">@values[0]</div>
+                                                    row++;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            </div>
+                            @Html.Raw("</div>")
+                            @if (system1Index != 0) {
+                                <div class="ui--pricing-table-after-html">
+                                    <div class="text-center fx--appear ui--animation">
+                                        <a class="btn btn-normal btn-block btn-icon-left btn-grey" href="@Href("~/custom-quote")">Request Information</a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div class="ui--shadow ui--shadow-type-2  clearfix">
+                            <img src="/Themes/PJS.Envision/Content/shadow-2.png" alt="">
+                        </div>
+                    </li>
+                }
+                @if (!String.IsNullOrWhiteSpace(system2)) {
+                    <li class="ui--pricing-table-column fx--appear ui--animation" delay="300">
+                        <div class="ui--shadow-top inset ui--box">
+                            @using (StreamReader sr = new StreamReader(system2Stream)) {
+                                string currentLine;
+                                int row = 0;
+
+                                while ((currentLine = sr.ReadLine()) != null) {
+                                    var values = currentLine.Split(',');
+
+                                    if (row == 0) {
+                                        int column = 0;
+
+                                        foreach (var value in values) {
+                                            if (value.ToLower() == system2.ToLower()) {
+                                                system2Index = column;
+                                                <div class="ui--pricing-table-item-title-wrap ui--gradient ui--gradient-grey">
+                                                    <h1 class="ui--pricing-table-item-title">
+                                                        <strong>@value.Replace("-", " ")</strong>
+                                                    </h1>
+                                                </div>
+                                            }
+                                            column++;
+                                        }
+
+                                        if (system2Index == 0) {
+                                            <div class="ui--pricing-table-item-title-wrap ui--gradient ui--gradient-grey">
+                                                <h1 class="ui--pricing-table-item-title">
+                                                    <strong>System Not Found</strong>
+                                                </h1>
+                                            </div>
+                                            @Html.Raw("<div class=\"ui--pricing-table-features-rows ui--pricing-table-features text-center\">")
+
+                                            break;
+                                        }
+
+                                        row++;
+                                    }
+                                    else if (row == 1) {
+                                        <div class="ui--pricing-table-before-html clearfix">
+                                            <div class="caption">
+                                                <p>@values[system2Index]</p>
+                                            </div>
+                                        </div>
+                                        @Html.Raw("<div class=\"ui--pricing-table-features-rows ui--pricing-table-features text-center\">")
+                                        row++;
+                                    }
+                                    else {
+                                        if (values[0].StartsWith("#")) {
+                                            <div class="ui--pricing-table-feature ui--pricing-table-feature-row-@(row) fx--caption-left ui--animation" data-group="ui--pricing-table-feature-row-@(row)" data-fx="fx--caption-left">
+                                            </div>
+                                        }
+                                        else {
+                                            if (!values[0].StartsWith("#") && !String.IsNullOrEmpty(values[system1Index])) {
+                                                <div class="ui--pricing-table-feature ui--pricing-table-feature-row-@row @(row %2 == 0 ? "even" : "odd") fx--caption-left ui--animation" data-group="ui--pricing-table-feature-row-@row" data-fx="fx--caption-left">
+                                                    <div class="ui--pricing-table-feature-title-phone visible-phone ">
+                                                        <strong>@values[0]:</strong>
+                                                    </div>
+                                                    @if (values[system2Index] == "TRUE") {
+                                                        <i class="ui--icon fa fa-check icon-inline-block" style="color: #2D5C88 !important;">&nbsp;</i>
+                                                    }
+                                                    else if (values[system2Index] == "FALSE") {
+                                                        <i class="ui--icon fa fa-remove icon-inline-block" style="color: #ed888d !important;">&nbsp;</i>
+                                                    }
+                                                    else {
+                                                        @values[system2Index]
+                                                    }
+                                                </div>
+                                                    row++;
+                                            }
+                                        }
+                                    }
+                                }
+                                @Html.Raw("</div>")
+                            }
+                        </div>
+                        <div class="ui--shadow ui--shadow-type-2  clearfix">
+                            <img src="/Themes/PJS.Envision/Content/shadow-2.png" alt="">
+                        </div>
+                    </li>
+                }
+                @if (!String.IsNullOrWhiteSpace(system3)) {
+                    <li class="ui--pricing-table-column fx--appear ui--animation" delay="600">
+                        <div class="ui--shadow-top inset ui--box">
+                            @using (StreamReader sr = new StreamReader(system3Stream)) {
+                                string currentLine;
+                                int row = 0;
+
+                                while ((currentLine = sr.ReadLine()) != null) {
+                                    var values = currentLine.Split(',');
+
+                                    if (row == 0) {
+                                        int column = 0;
+
+                                        foreach (var value in values) {
+                                            if (value.ToLower() == system3.ToLower()) {
+                                                system3Index = column;
+                                                <div class="ui--pricing-table-item-title-wrap ui--gradient ui--gradient-grey">
+                                                    <h1 class="ui--pricing-table-item-title">
+                                                        <strong>@value.Replace("-", " ")</strong>
+                                                    </h1>
+                                                </div>
+                                            }
+                                            column++;
+                                        }
+
+                                        if (system3Index == 0) {
+                                            <div class="ui--pricing-table-item-title-wrap ui--gradient ui--gradient-grey">
+                                                <h1 class="ui--pricing-table-item-title">
+                                                    <strong>System Not Found</strong>
+                                                </h1>
+                                            </div>
+                                            @Html.Raw("<div class=\"ui--pricing-table-features-rows ui--pricing-table-features text-center\">")
+
+                                            break;
+                                        }
+
+                                        row++;
+                                    }
+                                    else if (row == 1) {
+                                        <div class="ui--pricing-table-before-html clearfix">
+                                            <div class="caption">
+                                                <p>@values[system3Index]</p>
+                                            </div>
+                                        </div>
+                                        @Html.Raw("<div class=\"ui--pricing-table-features-rows ui--pricing-table-features text-center\">")
+                                        row++;
+                                    }
+                                    else {
+                                        if (values[0].StartsWith("#")) {
+                                            <div class="ui--pricing-table-feature ui--pricing-table-feature-row-@(row) fx--caption-left ui--animation" data-group="ui--pricing-table-feature-row-@(row)" data-fx="fx--caption-left">
+                                            </div>
+                                        }
+                                        else {
+                                            if (!values[0].StartsWith("#") && !String.IsNullOrEmpty(values[system1Index])) {
+                                                <div class="ui--pricing-table-feature ui--pricing-table-feature-row-@row @(row %2 == 0 ? "even" : "odd") fx--caption-left ui--animation" data-group="ui--pricing-table-feature-row-@row" data-fx="fx--caption-left">
+                                                    <div class="ui--pricing-table-feature-title-phone visible-phone ">
+                                                        <strong>@values[0]:</strong>
+                                                    </div>
+                                                    @if (values[system3Index] == "TRUE") {
+                                                        <i class="ui--icon fa fa-check icon-inline-block" style="color: #2D5C88 !important;">&nbsp;</i>
+                                                    }
+                                                    else if (values[system3Index] == "FALSE") {
+                                                        <i class="ui--icon fa fa-remove icon-inline-block" style="color: #ed888d !important;">&nbsp;</i>
+                                                    }
+                                                    else {
+                                                        @values[system3Index]
+                                                    }
+                                                </div>
+                                                    row++;
+                                            }
+                                        }
+                                    }
+                                }
+                                @Html.Raw("</div>")
+                            }
+                        </div>
+                        <div class="ui--shadow ui--shadow-type-2  clearfix">
+                            <img src="/Themes/PJS.Envision/Content/shadow-2.png" alt="">
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}

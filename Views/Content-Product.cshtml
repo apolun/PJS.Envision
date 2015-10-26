@@ -1,0 +1,223 @@
+﻿@using Orchard.ContentManagement;
+@using Orchard.MediaLibrary.Fields
+
+@{
+    Script.Require("Flexslider");
+
+    var product = Model.ContentItem;
+    string productPrice = String.Format("{0:C0}", product.Product.ProductPrice.Value);
+    var productImages = product.Product.ProductImages as MediaLibraryPickerField;
+    var productDownloads = product.Product.ProductDownloads as MediaLibraryPickerField;
+    var productStandardFeatures = Html.Raw(product.Product.ProductStandardFeatures.Value);
+    var productOptionalFeatures = Html.Raw(product.Product.ProductOptionalFeatures.Value);
+    var productSpecifications = Html.Raw(product.Product.ProductSpecifications.Value);
+    var productComparison = product.Product.ProductComparison.Value;
+    int productImageCount = 1;
+
+    Layout.Title = product.TitlePart.Title + " : " + T("Flight Simulation");
+}
+
+<div id="product-@Model.ContentItem.Id" class="product">
+    <div class="ui-row row-fluid">
+        <div class="span6 single-product-image">
+            @if (productImages != null) {
+                productImageCount = 1;
+                <div class="images">
+                    <div id="ui--shop-slider" class="ui--shop-gallery @(productImages.MediaParts.Count() > 1 ? "ui--shop-gallery-multi" : string.Empty)" data-options="{'effect':'fade','auto_rotate':false,'rotate_time':false}">
+                        <ul class="slides">
+                            @foreach (var mediapart in productImages.MediaParts.OrderBy(o => o.FileName)) {
+                                <li class="ui--shop-gallery-item">
+                                    <img class="ui--shop-gallery-image @(productImageCount != 1 ? "lazy" : string.Empty)" src="@(productImageCount != 1 ? Url.Content(WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Path + "/Content/" + "loader.gif") : Display.ResizeMediaUrl(Path: mediapart.MediaUrl, Width: 570))" data-src="@Display.ResizeMediaUrl(Path: mediapart.MediaUrl, Width: 570)" alt="@mediapart.AlternateText" />
+                                </li>
+                                productImageCount++;
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="span6 summary entry-summary">
+            <h1 class="product_title entry-title">@Layout.Title</h1>
+            <div>
+                <h2 class="price">
+                    <strong><span class="amount">@(productPrice != "$0" ? T(productPrice) : T("$Please call for pricing"))</span></strong> <span style="font-size: 12px;">@(productPrice != "$0" ? T("(starting price)") : T(string.Empty))</span>
+                </h2>
+            </div>
+            <div>
+                @Display(Model.Summary)
+            </div>
+            <div class="ui--divider ui--animation clearfix ui--divider-solid-line"></div>
+            <div class="ui--button-wrapper">
+                <div class="ui--block">
+                    <a class="btn btn-large btn-block btn-icon-left with-icon btn-primary" href="@Href("~/custom-quote")">
+                        <span class="button-icon">
+                            <i class="fa fa-envelope"></i>
+                        </span>
+                        @T("Request Information")
+                    </a>
+                    <div class="ui--shadow ui--shadow-type-1 ui--shadow-abs clearfix">
+                        <img src="@Url.Content(WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Path + "/Content/" + "shadow-1.png")" alt="shadow" />
+                    </div>
+                </div>
+            </div>
+            @if (!String.IsNullOrWhiteSpace(productComparison)) {
+                <div class="ui-row row-fluid">
+                    <div class="ui-column span6">
+                    </div>
+                    <div class="ui-column span6">
+                        <div class="ui--button-wrapper">
+                            <div class="ui--block">
+                                <a class="btn btn-large btn-block btn-icon-left with-icon btn-red" href="@Href(productComparison)">
+                                    <span class="button-icon">
+                                        <i class="fa fa-check-circle"></i>
+                                    </span>
+                                    @T("Compare to the Competition")
+                                </a>
+                                <div class="ui--shadow ui--shadow-type-1 ui--shadow-abs clearfix">
+                                    <img src="@Url.Content(WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Path + "/Content/" + "shadow-1.png")" alt="shadow" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="ui--tabs ui--tabs-mini ui--tabs-mini-horizontal clearfix text-left ui--done">
+        <div class="ui--tabs-header clearfix">
+            <div class="ui--tabs-header-holder">
+                <div class="ui--tabs-border-before" style="left: -4000px;"></div>
+                <div class="ui--tabs-border-after" style="left: 140px;"></div>
+                <ul class="ui--tabs-titles clearfix unstyled">
+                    <li class="first-item active">
+                        <h5><a href="#tab-1-1">@T("Standard Features")</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="#tab-1-2">@T("Optional Features")</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="#tab-1-3">@T("Specifications")</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="#tab-1-4">@T("Gallery")</a></h5>
+                    </li>
+                    <li>
+                        <h5><a href="#tab-1-5">@T("Downloads")</a></h5>
+                    </li>
+                    <li class="last-item">
+                        <h5><a href="#tab-1-6">@Display(Model.Stars)</a></h5>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <ul class="ui--tabs-contents text-left clearfix">
+            <li class="first-item active">
+                <div class="auto-format ui--animation product-standard-features">
+                    @productStandardFeatures
+                </div>
+            </li>
+            <li class="hidden">
+                <div class="auto-format ui--animation product-optional-features">
+                    @productOptionalFeatures
+                </div>
+            </li>
+            <li class="hidden">
+                <div class="auto-format ui--animation product-specifications">
+                    @productSpecifications
+                </div>
+            </li>
+            <li class="hidden">
+                <div class="auto-format ui--animation">
+                    @if (productImages != null) {
+                        productImageCount = 1;
+                        <div id="ui--gallery-1" class="ui--gallery ui--pass">
+                            <div class="unstyled-all clearfix ui--gallery-wrapper columns-6">
+                                <div class="ui-row row-fluid">
+                                    @foreach (var mediapart in productImages.MediaParts) {
+                                        <div class="ui-column span2">
+                                            <div class="ui--gallery-item ui--animation">
+                                                <div class="inner">
+                                                    <a href="@mediapart.MediaUrl" data-rel="prettyPhoto[ui--gallery-1]">
+                                                        <img class="lazy" src="@Url.Content(WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Path + "/Content/" + "loader.gif")" data-src="@Display.ResizeMediaUrl(Path: mediapart.MediaUrl, Width: 170)" alt="">
+                                                        <div class="ui--gallery-overlay">
+                                                            <div class="center">
+                                                                <span class="btn btn-grey"><i class="fa fa-arrows-alt"></i></span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        productImageCount++;
+                                    }
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    }
+                </div>
+            </li>
+            <li class="hidden">
+                <div class="auto-format ui--animation product-downloads">
+                    @if (productDownloads != null)
+                    {
+                        <ul>
+                            @foreach (var mediapart in productDownloads.MediaParts) {
+                                <li class="pdf">
+                                    <a href="@mediapart.MediaUrl" target="_blank">@mediapart.Title</a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </li>
+            <li class="last-item hidden">
+                <div class="auto-format ui--animation">
+                    @Display(Model.Reviews)
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+@using (Script.Foot()) {
+    <script type="text/javascript">
+        jQuery(window).load(function () {
+            var slider = jQuery('#ui--shop-slider');
+
+            slider.flexslider({
+                animation: "slide",
+                controlNav: false,
+                animationLoop: false,
+                slideshow: false,
+                smoothHeight: true,
+                animationSpeed: 500,
+                sync: "#ui--shop-slider-carousel",
+                start: function (slider) {
+                    // lazy load carousel
+                    jQuery("img.lazy").slice(0, 1).each(function () {
+                        var src = jQuery(this).attr("data-src");
+                        jQuery(this).attr("src", src).removeAttr("data-src").removeClass("lazy");
+                    });
+                },
+                before: function (slider) {
+                    // lazy load carousel
+                    jQuery("img.lazy").slice(0, 1).each(function () {
+                        var src = jQuery(this).attr("data-src");
+                        jQuery(this).attr("src", src).removeAttr("data-src").removeClass("lazy");
+                    });
+                }
+            }).css({ 'visibility': 'visible' });
+
+            slider.find('.flex-prev').html('<span class=\"arr arr-large arr-left ui--carosuel-prev\"><span></span><i class=\"fa fa-chevron-left px18\"></i></span>');
+            slider.find('.flex-next').html('<span class=\"arr arr-large ui--carosuel-next\"><span></span><i class=\"fa fa-chevron-right px18\"></i></span>');
+
+            // lazy load gallery
+            jQuery(".ui--gallery-item img.lazy").each(function () {
+                var src = jQuery(this).attr("data-src");
+                jQuery(this).attr("src", src).removeAttr("data-src").removeClass("lazy");
+            });
+        });
+    </script>
+}
