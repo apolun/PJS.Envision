@@ -86,14 +86,9 @@
     <Content Include="Content\icons\mstile-310x150.png" />
     <Content Include="Content\icons\mstile-70x70.png" />
     <Content Include="Content\icons\safari-pinned-tab.svg" />
-    <Content Include="Content\logo-dark-blue%402x.png" />
     <Content Include="Content\fade-dotted.png" />
     <Content Include="Content\fade-line.png" />
-    <Content Include="Content\logo-brown%402x.png" />
-    <Content Include="Content\logo-cyan%402x.png" />
-    <Content Include="Content\logo-green%402x.png" />
-    <Content Include="Content\logo-orange%402x.png" />
-    <Content Include="Content\logo-yellow%402x.png" />
+    <Content Include="Content\logo%402x.png" />
     <Content Include="Content\logo.png" />
     <Content Include="Content\patterns\1.png" />
     <Content Include="Content\patterns\10.png" />
