@@ -610,10 +610,6 @@
     <Content Include="Views\Parts.TermPart-TrainingSystemsTerm.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Parts.TwitterWidget.cshtml" />
-    <Content Include="Views\Parts.ZenGallery.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\EditorTemplates\Parts.ReCaptcha.Fields.cshtml" />
   </ItemGroup>
   <ItemGroup>
