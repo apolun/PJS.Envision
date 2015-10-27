@@ -1,0 +1,89 @@
+﻿@using System.Linq;
+@using Orchard.MediaLibrary.Models
+
+@{
+    var images = (IEnumerable<MediaPart>)Model.Images;
+
+    string categories = string.Empty;
+
+    foreach (var category in images.Where(x => !string.IsNullOrWhiteSpace(x.AlternateText)).Select(x => x.AlternateText)) {
+        categories += category + ",";
+    }
+
+    char[] delimiters = new char[] { ',' };
+    string[] categoryList = categories.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+    var distinctCategories = categoryList.Distinct().OrderBy(x => x).ToArray();
+
+    if (images != null && images.Count() > 0) {
+        var imageCount = images.Count();
+        var imageCounter = 0;
+        var categoryCount = distinctCategories.Count();
+        var categoryCounter = 1;
+
+        <div class="portfolio-container-wrapper ui--pass" data-layout="normal" data-columns="4">
+            <div class="ui--custom-menu-bar ui--gradient ui--gradient-grey ui--box text-left clearfix">
+                <ul id="#portfolio" class="portfolio-filters unstyled clearfix" data-isotope="#portfolio" data-multiple="">
+                    <li class="first-item active-item"><a href="javascript:;" data-filter="*">All</a></li>
+                    @foreach (var category in distinctCategories) {
+                        <li class="item-@categoryCounter @(categoryCounter == categoryCount ? "last-item" : string.Empty)">
+                            <a href="javascript:;" data-filter=".filter-@category.Replace(" ", "-")">@category</a>
+                        </li>
+                        
+                        categoryCounter++;
+                    }
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+            <div id="portfolio" class="portfolio-container layout--normal clearfix">
+                <div class="ui-row row">
+                    @foreach (var img in images.OrderBy(x => x.Title)) {
+                        string[] imgCategories = img.AlternateText.Split(delimiters, StringSplitOptions.RemoveEmptyEntries);
+
+                        <div class="ui-column span3 @{foreach(string imgCategory in imgCategories){<text>filter-@imgCategory.Replace(" ", "-") </text>}}">
+                            <div class="ui--block ui--content-item ui--pass ui--animation">
+                                <div class="ui--content-box ui--box ui-row">
+                                    <div class="ui--content-box-header">
+                                        <div class="ui--content-box-media effect--fade type--default clearfix" style="padding-bottom: 56.25%;">
+                                            <a class="ui--content-box-link" href="@img.MediaUrl" data-rel="prettyPhoto[pp_gal]">
+                                                <div class="ui--content-box-image-default">
+                                                    <img class="ui--content-box-image" src="@img.MediaUrl" alt="" title="">
+                                                </div>
+                                                <div class="ui--content-box-overlay">
+                                                    <div class="ui--content-box-overlay-background"></div>
+                                                    <div class="center">
+                                                        <span class="btn btn-grey ui--center-vertical" data-height="44" style="margin-top: -22px;">
+                                                            <span class="ui--content-box-overlay-button-icon"><i class="ui--icon fa fa-expand icon-inline-block" style="font-size: 18px;  width: 22px;  height: 22px;"></i></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <a class="ui--content-box-link">
+                                            <div class="ui--content-box-title ui--gradient ui--gradient-grey on--hover clearfix text-center">
+                                                <h5 class="ui--content-box-title-text">@img.Title</h5>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="ui--content-box-content">
+                                        <div class="ui--content-box-content-text">
+                                            <p>@img.Caption</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui--shadow ui--shadow-type-2 ui--shadow-abs ui--shadow-reset clearfix">
+                                    <img src="@Href(Html.ThemePath(WorkContext.CurrentTheme, "/Content/shadow-2.png"))" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                        imageCounter++;
+                        if (imageCounter % 4 == 0) {
+                        @Html.Raw("</div><div class=\"ui-row row\">");
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
