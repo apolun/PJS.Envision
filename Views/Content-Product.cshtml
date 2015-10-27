@@ -14,7 +14,7 @@
     var productComparison = product.Product.ProductComparison.Value;
     int productImageCount = 1;
 
-    Layout.Title = product.TitlePart.Title + " : " + T("Flight Simulation");
+    Layout.Title = product.TitlePart.Title;
 }
 
 <div id="product-@Model.ContentItem.Id" class="product">
@@ -40,29 +40,29 @@
             <h1 class="product_title entry-title">@Layout.Title</h1>
             <div>
                 <h2 class="price">
-                    <strong><span class="amount">@(productPrice != "$0" ? T(productPrice) : T("$Please call for pricing"))</span></strong> <span style="font-size: 12px;">@(productPrice != "$0" ? T("(starting price)") : T(string.Empty))</span>
+                    <strong><span class="amount">@(productPrice != "$0" ? T(productPrice) : T(""))</span></strong> <span style="font-size: 12px;">@(productPrice != "$0" ? T("(starting price)") : T(string.Empty))</span>
                 </h2>
             </div>
             <div>
                 @Display(Model.Summary)
             </div>
             <div class="ui--divider ui--animation clearfix ui--divider-solid-line"></div>
-            <div class="ui--button-wrapper">
-                <div class="ui--block">
-                    <a class="btn btn-large btn-block btn-icon-left with-icon btn-primary" href="@Href("~/custom-quote")">
-                        <span class="button-icon">
-                            <i class="fa fa-envelope"></i>
-                        </span>
-                        @T("Request Information")
-                    </a>
-                    <div class="ui--shadow ui--shadow-type-1 ui--shadow-abs clearfix">
-                        <img src="@Url.Content(WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Path + "/Content/" + "shadow-1.png")" alt="shadow" />
-                    </div>
-                </div>
-            </div>
             @if (!String.IsNullOrWhiteSpace(productComparison)) {
                 <div class="ui-row row-fluid">
                     <div class="ui-column span6">
+                        <div class="ui--button-wrapper">
+                            <div class="ui--block">
+                                <a class="btn btn-large btn-block btn-icon-left with-icon btn-primary" href="@Href("~/custom-quote")">
+                                    <span class="button-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    @T("Request Information")
+                                </a>
+                                <div class="ui--shadow ui--shadow-type-1 ui--shadow-abs clearfix">
+                                    <img src="@Url.Content(WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Path + "/Content/" + "shadow-1.png")" alt="shadow" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="ui-column span6">
                         <div class="ui--button-wrapper">
@@ -72,6 +72,25 @@
                                         <i class="fa fa-check-circle"></i>
                                     </span>
                                     @T("Compare to the Competition")
+                                </a>
+                                <div class="ui--shadow ui--shadow-type-1 ui--shadow-abs clearfix">
+                                    <img src="@Url.Content(WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Path + "/Content/" + "shadow-1.png")" alt="shadow" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            else {
+                <div class="ui-row row-fluid">
+                    <div class="ui-column span12">
+                        <div class="ui--button-wrapper">
+                            <div class="ui--block">
+                                <a class="btn btn-large btn-block btn-icon-left with-icon btn-primary" href="@Href("~/custom-quote")">
+                                    <span class="button-icon">
+                                        <i class="fa fa-envelope"></i>
+                                    </span>
+                                    @T("Request Information")
                                 </a>
                                 <div class="ui--shadow ui--shadow-type-1 ui--shadow-abs clearfix">
                                     <img src="@Url.Content(WorkContext.CurrentTheme.Location + "/" + WorkContext.CurrentTheme.Path + "/Content/" + "shadow-1.png")" alt="shadow" />
@@ -160,8 +179,7 @@
             </li>
             <li class="hidden">
                 <div class="auto-format ui--animation product-downloads">
-                    @if (productDownloads != null)
-                    {
+                    @if (productDownloads != null) {
                         <ul>
                             @foreach (var mediapart in productDownloads.MediaParts) {
                                 <li class="pdf">

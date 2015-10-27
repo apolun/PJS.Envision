@@ -68,7 +68,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets.json" />
-    <Content Include="ContactForm.html" />
     <Content Include="Content\bullet.png" />
     <Content Include="Content\fade-dotted.png" />
     <Content Include="Content\fade-line.png" />
@@ -100,8 +99,10 @@
     <Content Include="Content\icons\mstile-310x310.png" />
     <Content Include="Content\icons\mstile-70x70.png" />
     <Content Include="Content\icons\safari-pinned-tab.svg" />
+    <Content Include="Content\loader.gif" />
     <Content Include="Content\logo%402x.png" />
     <Content Include="Content\logo.png" />
+    <Content Include="Content\map-marker.png" />
     <Content Include="Content\patterns\1.png" />
     <Content Include="Content\patterns\10.png" />
     <Content Include="Content\patterns\11.png" />
@@ -184,19 +185,17 @@
     <Content Include="Content\title-bar\4.jpg" />
     <Content Include="Content\title-bar\3.jpg" />
     <Content Include="Content\title-bar\5.jpg" />
-    <Content Include="CustomerService.html" />
     <Content Include="oForm-ContactForm.html" />
     <Content Include="oForm-RequestInfo.html" />
-    <Content Include="Page-Comparison.html" />
     <Content Include="Page-CustomerService.html" />
     <Content Include="Page-Fixed-Wing.html" />
     <Content Include="Page-Home.html" />
-    <Content Include="Page-UIElements.html" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\cufon.js" />
     <Content Include="Scripts\envision-custom.js" />
     <Content Include="Scripts\extensions.js" />
     <Content Include="Scripts\gmap.js" />
+    <Content Include="Scripts\gmap.min.js" />
     <Content Include="Scripts\jquery-migrate.js" />
     <Content Include="Scripts\jquery-migrate.min.js" />
     <Content Include="Scripts\jquery.ba-throttle-debounce.min.js" />
@@ -323,6 +322,10 @@
     <ProjectReference Include="..\..\Core\Orchard.Core.csproj">
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Modules\Orchard.AntiSpam\Orchard.AntiSpam.csproj">
+      <Project>{91bc2e7f-da04-421c-98ef-76d37cec130c}</Project>
+      <Name>Orchard.AntiSpam</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Modules\Orchard.Blogs\Orchard.Blogs.csproj">
       <Project>{63fbd4d9-e1da-4a7b-aa6a-d6074fe50867}</Project>
@@ -609,6 +612,15 @@
   <ItemGroup>
     <Content Include="Views\Parts.TwitterWidget.cshtml" />
     <Content Include="Views\Parts.ZenGallery.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorTemplates\Parts.ReCaptcha.Fields.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Parts_Reviews.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ConfirmRatingDelete.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -16,7 +16,6 @@
     <Match DisplayType="Summary">
       <Place Parts_Common_Body_Summary="Summary:0"
              Parts_Tags_ShowTags="Tags:0"
-             Fields_MediaLibraryPicker="Media:0"
              Parts_Comments_Count="CommentsCount:0"
              Parts_Common_Metadata_Summary="-" />
     </Match>
@@ -24,7 +23,6 @@
       <Place Parts_Title="/BeforeMain:0"
              Parts_Common_Body="Summary:0"
              Parts_Tags_ShowTags="Tags:0"
-             Fields_MediaLibraryPicker="Media:0"
              Parts_Comments_Count="CommentsCount:0"
              Parts_ListOfComments="Footer:1"
              Parts_CommentForm="Footer:2"
@@ -44,6 +42,18 @@
 
   <Match ContentType="ZenGallery">
     <Place Parts_Common_Metadata="-"/>
+  </Match>
+
+  <Match ContentType="OForm">
+    <Place Parts_Title="-"/>
+  </Match>
+
+  <Match ContentType="Product">
+    <Place Parts_Title="-"
+           Parts_Common_Metadata="-"
+           Parts_Common_Body="Summary:0"
+           Parts_Stars_Details_ReadOnly="Stars:0"
+           Parts_Reviews="Reviews:0"/>
   </Match>
   
   <Match ContentType="Testimonial">

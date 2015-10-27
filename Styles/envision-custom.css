@@ -1,6 +1,6 @@
 ﻿/* dynamic css */
 @media ( min-width: 979px ) {
-    .modern-browser #header-container.stuck #logo img { height: 30px; margin-top: 20px !important; margin-bottom: 20px !important; }
+    .modern-browser #header-container.stuck #logo img { height: 80px; margin-top: 10px !important; margin-bottom: 10px !important; }
 }
 
 #text-rotator-1 .ui--text-rotator-placeholder, html #text-rotator-1.waiting-rotating, html #text-rotator-1 .rotating > span { border-bottom-style: solid; border-bottom-width: 1px; }
@@ -38,3 +38,27 @@ html #footer-bottom { background-image: none; }
 
 /* lists */
 ul.blog-posts, ul.tagCloud { list-style: none; margin: 0; }
+
+/* CUSTOM LISTS */
+.product-standard-features ul { list-style: none none; list-style-type: none; list-style-position: outside; margin-bottom: 18px; }
+    .product-standard-features ul li { padding-left: 28px; position: relative; padding: 3px 0; }
+        .product-standard-features ul li::before { content: "\f00c"; font-family: 'FontAwesome'; font-size: 16px; color: #2D5C88; margin-right: 10px; }
+.product-optional-features ul { list-style: none none; list-style-type: none; list-style-position: outside; margin-bottom: 18px; }
+    .product-optional-features ul li { padding-left: 28px; position: relative; padding: 3px 0; }
+        .product-optional-features ul li::before { content: "\f067"; font-family: 'FontAwesome'; font-size: 16px; color: #2D5C88; margin-right: 10px; }
+.product-specifications ul { list-style: none none; list-style-type: none; list-style-position: outside; margin-bottom: 18px; }
+    .product-specifications ul li { padding-left: 28px; position: relative; padding: 3px 0; }
+        .product-specifications ul li::before { content: "\f013"; font-family: 'FontAwesome'; font-size: 16px; color: #2D5C88; margin-right: 10px; }
+.product-downloads ul { list-style: none none; list-style-type: none; list-style-position: outside; margin-bottom: 18px; }
+    .product-downloads ul li { padding-left: 28px; position: relative; padding: 3px 0; }
+        .product-downloads ul li.pdf::before { content: "\f1c1"; font-family: 'FontAwesome'; font-size: 16px; color: #d32a3b; margin-right: 10px; }
+.ui--blog-documents ul { list-style: none none; list-style-type: none; list-style-position: outside; margin-bottom: 18px; }
+    .ui--blog-documents ul li { padding-left: 28px; position: relative; padding: 3px 0; }
+        .ui--blog-documents ul li.pdf::before { content: "\f1c1"; font-family: 'FontAwesome'; font-size: 16px; color: #d32a3b; margin-right: 10px; }
+        .ui--blog-documents ul li.doc::before { content: "\f1c2"; font-family: 'FontAwesome'; font-size: 16px; color: #d32a3b; margin-right: 10px; }
+
+/* flexslider arrows */
+ul.flex-direction-nav li { float: left; }
+
+/* footer navigation links */
+#footer-navigation li { display: inline-block; }

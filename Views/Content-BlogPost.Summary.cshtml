@@ -1,21 +1,70 @@
 ﻿@using Orchard.ContentManagement;
+@using Orchard.MediaLibrary.Fields
+@using Orchard.MediaLibrary.Models
 @using Orchard.Tags.ViewModels
 @using PJS.Envision.Models;
 
 @{
     var settings = WorkContext.CurrentSite.As<EnvisionThemeSettingsPart>();
     var blogPost = Model.ContentItem;
+    var imageField = blogPost.BlogPostPart.BlogPostMedia as MediaLibraryPickerField;
 }
 
 @if (settings.BlogStyle == "large") {
     <div class="ui--blog-item clearfix layout--standard">
-        @Display(Model.Media)
+        @if (imageField != null) {
+            if (imageField.MediaParts.Count() > 1) {
+                <div class="ui--blog-media">
+                    <div class="ui--blog-gallery" data-options="{'effect':'fade','auto_rotate':false,'rotate_time':false}">
+                        <div class="slides">
+                            @foreach (var mediapart in imageField.MediaParts) {
+                                if (mediapart.MimeType.StartsWith("image")) {
+                                    <div class="ui--blog-gallery-item">
+                                        <img class="ui--blog-gallery-image" src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" />
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="ui--blog-gallery-navigation"></div>
+                    </div>
+                </div>
+            }
+            else if (imageField.MediaParts.Count() == 1) {
+                <div class="ui--blog-media">
+                    @foreach (var mediapart in imageField.MediaParts) {
+                        if (mediapart.MimeType.StartsWith("image")) {
+                            <a class="ui--blog-link" href="#">
+                                <img class="ui--blog-image" src="@mediapart.MediaUrl" alt="@mediapart.AlternateText">
+                            </a>
+                        }
+                        else if (mediapart.MimeType.StartsWith("video")) {
+                            <div class="ui--blog-video clearfix">
+                                <div class="ui--video-wrapper clearfix">
+                                    <div class="ui--video ui--video-16-9">
+                                        <iframe src="@mediapart.MediaUrl"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (mediapart.MimeType == "text/html") {
+                            <div class="ui--blog-video clearfix">
+                                <div class="ui--video-wrapper clearfix">
+                                    <div class="ui--video ui--video-16-9">
+                                        @Html.Raw(mediapart.As<OEmbedPart>()["html"])
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        }
         <div class="ui--blog-content-wrapper">
             <div class="ui--blog-header">
                 <h3 class="ui--blog-title entry-title clearfix"><a class="ui--blog-link" href="@Url.ItemDisplayUrl((IContent)blogPost)">@blogPost.TitlePart.Title</a></h3>
                 <div class="ui--blog-metas clearfix">
                     <div class="ui--blog-metas-right pull-right">
-                        <span class="ui--meta-comment"><a href="@Url.ItemDisplayUrl((IContent)blogPost)#comments"><i class="fa fa-comment px14"></i> @Display(Model.CommentsCount)</a></span>
+                        <span class="ui--meta-comment"><a href="@Url.ItemDisplayUrl((IContent)blogPost)#comments">@Display(Model.CommentsCount)</a></span>
                     </div>
                     <div class="ui--blog-metas-left">
                         <span class="ui--meta-author">by <a href="/Search?q=@blogPost.CommonPart.Owner.UserName">@blogPost.CommonPart.Owner.UserName</a></span>

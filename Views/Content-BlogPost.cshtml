@@ -1,20 +1,82 @@
 ﻿@using Orchard.ContentManagement;
+@using Orchard.MediaLibrary.Fields
+@using Orchard.MediaLibrary.Models
 @using Orchard.Tags.ViewModels;
 
 @{
     Script.Require("Sharrre");
     var blogPost = Model.ContentItem;
+    var imageField = blogPost.BlogPostPart.BlogPostMedia as MediaLibraryPickerField;
+    var documentField = blogPost.BlogPostPart.BlogPostDownloads as MediaLibraryPickerField;
 }
 
 <div class="ui--blog ui--blog-wrapper ui--pass">
     <div class="ui--blog-item clearfix layout--single">
-        @Display(Model.Media)
+        @if (imageField != null) {
+            if (imageField.MediaParts.Count() > 1) {
+                <div class="ui--blog-media">
+                    <div class="ui--blog-gallery" data-options="{'effect':'fade','auto_rotate':false,'rotate_time':false}">
+                        <div class="slides">
+                            @foreach (var mediapart in imageField.MediaParts) {
+                                if (mediapart.MimeType.StartsWith("image")) {
+                                    <div class="ui--blog-gallery-item">
+                                        <img class="ui--blog-gallery-image" src="@mediapart.MediaUrl" alt="@mediapart.AlternateText" />
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="ui--blog-gallery-navigation"></div>
+                    </div>
+                </div>
+            }
+            else if (imageField.MediaParts.Count() == 1) {
+                <div class="ui--blog-media">
+                    @foreach (var mediapart in imageField.MediaParts) {
+                        if (mediapart.MimeType.StartsWith("image")) {
+                            <a class="ui--blog-link" href="#">
+                                <img class="ui--blog-image" src="@mediapart.MediaUrl" alt="@mediapart.AlternateText">
+                            </a>
+                        }
+                        else if (mediapart.MimeType.StartsWith("video")) {
+                            <div class="ui--blog-video clearfix">
+                                <div class="ui--video-wrapper clearfix">
+                                    <div class="ui--video ui--video-16-9">
+                                        <iframe src="@mediapart.MediaUrl"></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else if (mediapart.MimeType == "text/html") {
+                            <div class="ui--blog-video clearfix">
+                                <div class="ui--video-wrapper clearfix">
+                                    <div class="ui--video ui--video-16-9">
+                                        @Html.Raw(mediapart.As<OEmbedPart>()["html"])
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            }
+        }
         <div class="ui--blog-content-wrapper">
             <div class="ui--blog-header">
                 <h3 class="ui--blog-title entry-title clearfix"><span class="ui--blog-link">@blogPost.TitlePart.Title</span></h3>
             </div>
             <div class="ui--blog-content">
                 @Display(Model.Summary)
+
+                @if (documentField != null) {
+                    <div class="ui--blog-documents">
+                        <ul>
+                            @foreach (var mediapart in documentField.MediaParts) {
+                                <li class="@(mediapart.FileName.ToLower().EndsWith("pdf") ? "pdf" : "doc")">
+                                    <a href="@mediapart.MediaUrl" target="_blank">@mediapart.AlternateText</a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                }
             </div>
             <div class="ui--blog-metas clearfix">
                 <span>
