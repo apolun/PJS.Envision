@@ -38,3 +38,6 @@ html #footer-bottom { background-image: none; }
 
 /* lists */
 ul.blog-posts, ul.tagCloud { list-style: none; margin: 0; }
+
+/* portfolio */
+ul.portfolio-filters li { margin-right: -3px; }
