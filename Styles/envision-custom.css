@@ -1,6 +1,6 @@
 ﻿/* dynamic css */
 @media ( min-width: 979px ) {
-    .modern-browser #header-container.stuck #logo img { height: 80px; margin-top: 10px !important; margin-bottom: 10px !important; }
+    .modern-browser #header-container.stuck #logo img { height: 94px; margin-top: 10px !important; margin-bottom: 10px !important; }
 }
 
 #text-rotator-1 .ui--text-rotator-placeholder, html #text-rotator-1.waiting-rotating, html #text-rotator-1 .rotating > span { border-bottom-style: solid; border-bottom-width: 1px; }
@@ -38,6 +38,7 @@ html #footer-bottom { background-image: none; }
 
 /* lists */
 ul.blog-posts, ul.tagCloud { list-style: none; margin: 0; }
+ul.recent-posts li, ul.archiveMonthList li { padding-bottom: 5px; }
 
 /* CUSTOM LISTS */
 .product-standard-features ul { list-style: none none; list-style-type: none; list-style-position: outside; margin-bottom: 18px; }
